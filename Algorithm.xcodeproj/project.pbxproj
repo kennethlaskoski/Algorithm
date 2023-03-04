@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA03B129B300CB00923DB7 /* BootView.swift */; };
 		9FFD29A729A68DD100B08B4E /* AlgorithmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */; };
 		9FFD29A929A68DD100B08B4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A829A68DD100B08B4E /* ContentView.swift */; };
 		9FFD29AB29A68DD200B08B4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFD29AA29A68DD200B08B4E /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9FCA03B129B300CB00923DB7 /* BootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
 		9FFD29A329A68DD100B08B4E /* Algorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmApp.swift; sourceTree = "<group>"; };
 		9FFD29A829A68DD100B08B4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */,
 				9FFD29A829A68DD100B08B4E /* ContentView.swift */,
+				9FCA03B129B300CB00923DB7 /* BootView.swift */,
 				9FFD29AA29A68DD200B08B4E /* Assets.xcassets */,
 				9FFD29AC29A68DD200B08B4E /* Algorithm.entitlements */,
 				9FFD29AD29A68DD200B08B4E /* Preview Content */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */,
 				9FFD29A929A68DD100B08B4E /* ContentView.swift in Sources */,
 				9FFD29A729A68DD100B08B4E /* AlgorithmApp.swift in Sources */,
 			);

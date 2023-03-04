@@ -1,9 +1,5 @@
-//
-//  AlgorithmApp.swift
-//  Algorithm
-//
-//  Created by Kenneth Laskoski on 2023-02-22.
-//
+//  Copyright © 2023 Kenneth Laskoski. All Rights Reserved.
+//  SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
 
@@ -11,7 +7,8 @@ import SwiftUI
 struct AlgorithmApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          ContentView()
+            .preferredColorScheme(.dark)
         }
     }
 }
