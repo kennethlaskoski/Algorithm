@@ -5,10 +5,10 @@ import SwiftUI
 
 @main
 struct AlgorithmApp: App {
-    var body: some Scene {
-        WindowGroup {
-          ContentView()
-            .preferredColorScheme(.dark)
-        }
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
+        .preferredColorScheme(.dark)
     }
+  }
 }
