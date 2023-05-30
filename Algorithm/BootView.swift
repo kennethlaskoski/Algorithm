@@ -4,17 +4,15 @@
 import SwiftUI
 
 struct BootView: View {
-
-  @State var fraction = 0.0
-  
+  @State var fraction = 0.0 //+ 1.0 //- 0.5
 
   var body: some View {
-    let state: BootView.Phase = fraction < 1.0 ? .booting(fraction) : .booted
+    let phase = Phase(fraction)
+
     ZStack() {
       Rectangle()
-        .foregroundColor(Color("AccentColor"))
-        .mask(state.mask)
-        .background(.black)
+	.foregroundColor(Color("AccentColor"))
+	.mask(phase.button)
 
 #if DEBUG
       DebugSlider(fraction: $fraction)
@@ -27,51 +25,60 @@ struct BootView: View {
     case booting(Double)
     case booted
 
-    func mask() -> some View {
+    init(_ fraction: Double) {
+      self = fraction < 1.0 ? .booting(fraction) : .booted
+    }
+
+    func button() -> some View {
       var name = "none"
-      var opacity = 1.0
+      var opacity = 0.0
+
       switch self {
       case .booting(let fraction):
-        name = "power.dotted"
-        opacity = fraction
+	name = "power.dotted"
+	opacity = fraction
       case .booted:
-        name = "power"
+	name = "power"
+	opacity = 1.0
       }
-      
-      return systemMask(name: name).opacity(opacity)
+
+      return Image(systemName: name).mask()
+	.font(.system(size: 144.0, weight: .heavy))
+	.opacity(opacity)
     }
   }
 }
 
-func systemMask(name: String) -> some View {
-  Image(systemName: name)
-    .font(.system(size: 144.0, weight: .heavy))
-    .foregroundColor(
-      Color(.white)
-    )
-    .luminanceToAlpha()
+extension View {
+  func mask() -> some View {
+    self.foregroundColor(.white).luminanceToAlpha()
+  }
 }
 
-struct PowerButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        BootView()
-    }
+struct BootView_Previews: PreviewProvider {
+  static var previews: some View {
+    BootView()
+  }
 }
 
 #if DEBUG
 struct DebugSlider: View {
   @Binding var fraction: Double
+
   var body: some View {
-    VStack() {
+    VStack {
       Spacer()
-      HStack() {
-        let height = 44.0
-        let phy = 1.61803398875
-        Slider(value: $fraction)
-          .padding(11.0)
-          .frame(width: 3.0*phy*height, height: height)
-          .border(.red)
-        Spacer()
+
+      HStack {
+	let height = 44.0
+	let phy = 1.61803398875
+
+	Slider(value: $fraction)
+	  .padding()
+	  .frame(width: 3.0*phy*height, height: height)
+	  .border(.red)
+
+	Spacer()
       }
     }
     .padding(13.0)

@@ -1,4 +1,4 @@
-//  Copyright © 2023 Kenneth Laskoski. All Rights Reserved.
+//  Copyright © 2023 Kenneth Laskoski
 //  SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
