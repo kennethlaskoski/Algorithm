@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9FC82CA52A2FA5DC008B7C44 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FC82CA42A2FA5DC008B7C44 /* Info.plist */; };
 		9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA03B129B300CB00923DB7 /* BootView.swift */; };
 		9FFD29A729A68DD100B08B4E /* AlgorithmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */; };
 		9FFD29A929A68DD100B08B4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A829A68DD100B08B4E /* ContentView.swift */; };
@@ -36,8 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9FC82CA42A2FA5DC008B7C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FCA03B129B300CB00923DB7 /* BootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
+		9FF7F2582A2FBE920010D9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9FFD29A329A68DD100B08B4E /* Algorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmApp.swift; sourceTree = "<group>"; };
 		9FFD29A829A68DD100B08B4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,13 +98,13 @@
 		9FFD29A529A68DD100B08B4E /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				9FF7F2582A2FBE920010D9FD /* Info.plist */,
 				9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */,
 				9FFD29A829A68DD100B08B4E /* ContentView.swift */,
 				9FCA03B129B300CB00923DB7 /* BootView.swift */,
 				9FFD29AA29A68DD200B08B4E /* Assets.xcassets */,
 				9FFD29AC29A68DD200B08B4E /* Algorithm.entitlements */,
 				9FFD29AD29A68DD200B08B4E /* Preview Content */,
-				9FC82CA42A2FA5DC008B7C44 /* Info.plist */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -241,7 +240,6 @@
 			files = (
 				9FFD29AF29A68DD200B08B4E /* Preview Assets.xcassets in Resources */,
 				9FFD29AB29A68DD200B08B4E /* Assets.xcassets in Resources */,
-				9FC82CA52A2FA5DC008B7C44 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,14 +428,15 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Algorithm/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -471,14 +470,15 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Algorithm/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
