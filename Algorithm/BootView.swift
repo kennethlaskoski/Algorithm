@@ -1,4 +1,4 @@
-//  Copyright © 2023 Kenneth Laskoski. All Rights Reserved.
+//  Copyright © 2023 Kenneth Laskoski
 //  SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
@@ -13,6 +13,7 @@ struct BootView: View {
       Rectangle()
 	.foregroundColor(Color("AccentColor"))
 	.mask(phase.button)
+        .onTapGesture { fraction = 1.0 - fraction }
 
 #if DEBUG
       DebugSlider(fraction: $fraction)
