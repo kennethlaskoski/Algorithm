@@ -11,7 +11,7 @@ struct BootView: View {
 
     ZStack() {
       Rectangle()
-	.foregroundColor(Color("AccentColor"))
+        .foregroundColor(.accentColor)
 	.mask(phase.button)
         .onTapGesture { fraction = 1.0 - fraction }
 
