@@ -8,7 +8,17 @@ struct AlgorithmApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .preferredColorScheme(.dark)
     }
   }
+}
+
+struct deviceKey: EnvironmentKey {
+  static var defaultValue = Device()
+}
+
+extension EnvironmentValues {
+    var device: Device {
+        get { self[deviceKey.self] }
+        set { self[deviceKey.self] = newValue }
+    }
 }
