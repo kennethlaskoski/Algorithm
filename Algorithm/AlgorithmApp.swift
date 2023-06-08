@@ -5,12 +5,12 @@ import SwiftUI
 
 @main
 struct AlgorithmApp: App {
-  private var appData = AppData()
+  private var neander = Neander()
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
-        .environmentObject(appData)
+      RootView()
+        .environmentObject(neander.state)
     }
   }
 }
@@ -22,6 +22,6 @@ struct deviceKey: EnvironmentKey {
 extension EnvironmentValues {
     var device: Device {
         get { self[deviceKey.self] }
-//        set { self[deviceKey.self] = newValue }
+        set { self[deviceKey.self] = newValue }
     }
 }
