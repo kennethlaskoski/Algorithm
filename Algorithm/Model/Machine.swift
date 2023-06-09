@@ -10,7 +10,7 @@ struct Flag: Identifiable {
   var id: String { name }
 }
 
-struct Neander {
+class Neander: ObservableObject {
   typealias Word = UInt8
   static let memSize = (Word.min...Word.max).count
 
@@ -23,21 +23,25 @@ struct Neander {
       case running
     }
 
+    @Published
     var memory = [Int](repeating: 0, count: Neander.memSize)
 
     var rMemAddr = 0
     var rMemData = 0
 
+    @Published
     var rAC = 0
     var zeroFlag: Flag { Flag(name: "Z", isOn: rAC == 0) }
-    var negativeFlag: Flag { Flag(name: "N", isOn: rAC < 0) }
+    var negativeFlag: Flag { Flag(name: "N", isOn: rAC > 0x7f) }
 
-    var rPC = 0x80
+    @Published
+    var rPC = 0
     var rI = 0
 
     var runState: RunState = .stopped
   }
 
+  @Published
   var state = State()
 
   typealias Transition = (Neander) -> ()
@@ -114,6 +118,7 @@ struct Neander {
     default:
       break
     }
+    state.rAC &= bitMask
   }
 
   static let jmp: Transition = {
@@ -133,6 +138,7 @@ struct Neander {
     default:
       break
     }
+    state.rPC &= bitMask
   }
 
   static let cycle: Transition = {
@@ -143,8 +149,10 @@ struct Neander {
   }
 
   func run() {
-    while state.runState == .running {
+    state.runState = .running
+    while state.runState == .running && state.rPC < 0x80 {
       Neander.cycle(self)
     }
+    state.runState = .stopped
   }
 }

@@ -3,19 +3,59 @@
 
 import SwiftUI
 
+extension String {
+  public init<T: FixedWidthInteger>(hexa: T, length: Int = T.bitWidth / 4) {
+    let hexaString = String(hexa, radix: 16, uppercase: true)
+    let padding = String(repeating: "0", count: length - hexaString.count)
+    self = padding + hexaString
+  }
+}
+
 struct NeanderView: View {
-  @EnvironmentObject var state: Neander.State
+  @StateObject var machine: Neander
 
   var body: some View {
     VStack {
-      List {
-        ForEach(0..<256, id: \.self) {
-          Text(state.memory[$0].description)
+      HStack(spacing: 0.0) {
+        ScrollView {
+          Grid(alignment: .leading) {
+            ForEach(0..<Neander.memSize / 2 , id: \.self) { i in
+              GridRow {
+                Text(String(hexa: i, length: 2))
+                Text("\(machine.state.memory[i])")
+
+                Spacer()
+              }
+            }
+          }
+        }
+
+        Divider()
+
+        ScrollView {
+          Grid(alignment: .leading) {
+            ForEach(Neander.memSize / 2..<Neander.memSize, id: \.self) { i in
+              GridRow {
+                Text(String(hexa: i, length: 2))
+                Text("\(machine.state.memory[i])")
+
+                Spacer()
+              }
+            }
+          }
+        }.padding(.leading, 4.0)
+      }.fontDesign(.monospaced)
+
+      HStack {
+        VStack {
+          PCView(state: machine.state)
+          ACView(state: machine.state)
+        }
+        Button(action: { machine.run() }) {
+          Label("", systemImage: "play.fill").font(.body)
         }
       }
 
-      PCView(state: state)
-      ACView(state: state)
     }
     .padding(.horizontal, 4.0)
     .font(.footnote)
@@ -36,13 +76,14 @@ struct ACView: View {
           )
         )
       }
+      HStack(spacing: 0.0) {
+        Text(state.zeroFlag.name)
+        BitView(isOn: Binding.constant(state.zeroFlag.isOn))
+        BitView(isOn: Binding.constant(state.negativeFlag.isOn))
+        Text(state.negativeFlag.name)
+      }.padding(.leading, 8.0)
 
       Spacer()
-
-      Text(state.zeroFlag.name)
-      BitView(isOn: Binding.constant(state.zeroFlag.isOn))
-      BitView(isOn: Binding.constant(state.negativeFlag.isOn))
-      Text(state.negativeFlag.name)
     }
   }
 }
@@ -91,12 +132,12 @@ struct NeanderView_Previews: PreviewProvider {
   static var neander: Neander = {
     let neander = Neander()
 //    neander.state.rAC = 0
-//    neander.state.rPC = 0x80
+//    neander.state.rPC = 0
     return neander
   }()
 
   static var previews: some View {
-    NeanderView()
-      .environmentObject(neander.state)
+    NeanderView(machine: neander)
+      .environmentObject(neander)
   }
 }

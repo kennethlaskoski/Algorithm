@@ -10,7 +10,7 @@ struct AlgorithmApp: App {
   var body: some Scene {
     WindowGroup {
       RootView()
-        .environmentObject(neander.state)
+        .environmentObject(neander)
     }
   }
 }
