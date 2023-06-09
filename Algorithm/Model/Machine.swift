@@ -3,6 +3,13 @@
 
 import SwiftUI
 
+struct Flag: Identifiable {
+  let name: String
+  let isOn: Bool
+
+  var id: String { name }
+}
+
 struct Neander {
   static let memSize = 1 >> 8
 
@@ -18,8 +25,8 @@ struct Neander {
     var rMemData = 0
 
     var rAC = 0
-    var isZero = true
-    var isNegative = false
+    var zeroFlag: Flag { Flag(name: "Z", isOn: rAC == 0) }
+    var negativeFlag: Flag { Flag(name: "N", isOn: rAC < 0) }
 
     var rPC = 0
     var rI = 0
@@ -114,11 +121,11 @@ struct Neander {
     case 0b1000_0000:
       state.rPC = state.rMemData
     case 0b1001_0000:
-      if state.rAC < 0 {
+      if state.negativeFlag.isOn {
         state.rPC = state.rMemData
       }
     case 0b1010_0000:
-      if state.rAC == 0 {
+      if state.zeroFlag.isOn {
         state.rPC = state.rMemData
       }
     default:
