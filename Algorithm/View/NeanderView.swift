@@ -7,41 +7,67 @@ struct NeanderView: View {
   @EnvironmentObject var state: Neander.State
 
   var body: some View {
-    Grid {
-      GridRow(alignment: .bottom) {
-        RegisterView(name: "AC", value: state.rAC)
-        FlagGrid([
-          state.zeroFlag,
-          state.negativeFlag,
-        ])
-        .padding([.horizontal], 4.0)
-        .padding([.vertical], 2.0)
-        .border(Color.accentColor)
+    VStack {
+      List {
+        ForEach(0..<256, id: \.self) {
+          Text(state.memory[$0].description)
+        }
       }
-      GridRow {
-        RegisterView(name: "PC", value: state.rPC)
-      }
+
+      PCView(state: state)
+      ACView(state: state)
     }
-//    .padding()
+    .padding(.horizontal, 4.0)
+    .font(.footnote)
   }
 }
 
-struct RegisterView: View {
-  let name: String
-  let value: Int
+struct ACView: View {
+  @StateObject var state: Neander.State
 
   var body: some View {
-    VStack {
-      HStack {
-        Text(name)
-        Text("\(value)")
+    HStack(spacing: 0.0) {
+      HStack(spacing: 4.0) {
+        Text("AC")
+        BinaryView(
+          number: Binding(
+            get: { state.rAC[0] },
+            set: { state.rAC = Int($0) }
+          )
+        )
       }
-      BinaryView(Int8(value))
+
+      Spacer()
+
+      Text(state.zeroFlag.name)
+      BitView(isOn: Binding.constant(state.zeroFlag.isOn))
+      BitView(isOn: Binding.constant(state.negativeFlag.isOn))
+      Text(state.negativeFlag.name)
     }
   }
 }
 
-struct FlagGrid: View {
+struct PCView: View {
+  @StateObject var state: Neander.State
+
+  var body: some View {
+    HStack(spacing: 0.0) {
+      HStack(spacing: 4.0) {
+        Text("PC")
+        BinaryView(
+          number: Binding(
+            get: { state.rPC[0] },
+            set: { state.rPC = Int($0) }
+          )
+        )
+      }
+
+      Spacer()
+    }
+  }
+}
+
+struct FlagsView: View {
   private let flags: [Flag]
 
   init(_ flags: [Flag]) {
@@ -49,56 +75,23 @@ struct FlagGrid: View {
   }
 
   var body: some View {
-    Grid(horizontalSpacing: 1.0) {
-      ForEach(flags) { flag in
-        GridRow {
-          Text(flag.name)
-            .font(.footnote)
-          BitView(isOn: flag.isOn)
-        }
-      }
+      HStack(spacing: 0.0) {
+        Text(flags[0].name)
+          .font(.footnote)
+        BitView(isOn: Binding.constant(flags[0].isOn))
+        BitView(isOn: Binding.constant(flags[1].isOn))
+        Text(flags[1].name)
+          .font(.footnote)
     }
-  }
-}
-
-struct BitView: View {
-  let isOn: Bool
-  var body: some View {
-      Image(systemName: isOn ? "circle.inset.filled" : "circle")
-        .foregroundColor(.accentColor)
-  }
-}
-
-struct BinaryView<T: FixedWidthInteger>: View {
-  private let digits = T.bitWidth
-
-  let value: T
-  let bits: [Flag]
-
-  init(_ value: T) {
-    self.value = value
-    var bits = [Flag]()
-    var mask: T
-    for bit in (0..<digits).reversed() {
-      mask = 1 << bit
-      bits.append(Flag(name: "\(bit)", isOn: value & mask != 0))
-    }
-    self.bits = bits
-  }
-
-  var body: some View {
-    HStack(spacing: 0.0) {
-      ForEach(bits) { bit in
-        BitView(isOn: bit.isOn)
-      }
-    }
+    .padding(.horizontal)
   }
 }
 
 struct NeanderView_Previews: PreviewProvider {
   static var neander: Neander = {
     let neander = Neander()
-    neander.state.rAC = -1
+//    neander.state.rAC = 0
+//    neander.state.rPC = 0x80
     return neander
   }()
 

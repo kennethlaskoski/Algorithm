@@ -11,7 +11,11 @@ struct Flag: Identifiable {
 }
 
 struct Neander {
-  static let memSize = 1 >> 8
+  typealias Word = UInt8
+  static let memSize = (Word.min...Word.max).count
+
+  static let bitPattern = UInt(~Word.zero)
+  static let bitMask = Int(bitPattern: bitPattern)
 
   class State: ObservableObject {
     enum RunState {
@@ -28,7 +32,7 @@ struct Neander {
     var zeroFlag: Flag { Flag(name: "Z", isOn: rAC == 0) }
     var negativeFlag: Flag { Flag(name: "N", isOn: rAC < 0) }
 
-    var rPC = 0
+    var rPC = 0x80
     var rI = 0
 
     var runState: RunState = .stopped
@@ -52,9 +56,7 @@ struct Neander {
     var state = $0.state
     state.rMemAddr = state.rPC
     state.rPC += 1
-    if state.rPC == Neander.memSize {
-      state.rPC = 0
-    }
+    state.rPC &= bitMask
   }
 
   static let decode: Transition = {

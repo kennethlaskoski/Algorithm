@@ -14,6 +14,7 @@
 		9F8E59E22A3008FE0005C30E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E12A3008FE0005C30E /* InfoView.swift */; };
 		9F8E59E52A3014EC0005C30E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E42A3014EC0005C30E /* User.swift */; };
 		9F8E59E72A301A8B0005C30E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E62A301A8B0005C30E /* Device.swift */; };
+		9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC3B9C2A33003700D65C29 /* BinaryView.swift */; };
 		9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA03B129B300CB00923DB7 /* BootView.swift */; };
 		9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125B2A31B6F200F58C84 /* NeanderView.swift */; };
 		9FFB125E2A31B74D00F58C84 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125D2A31B74D00F58C84 /* RootView.swift */; };
@@ -51,6 +52,7 @@
 		9F8E59E12A3008FE0005C30E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		9F8E59E42A3014EC0005C30E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9F8E59E62A301A8B0005C30E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		9FBC3B9C2A33003700D65C29 /* BinaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryView.swift; sourceTree = "<group>"; };
 		9FCA03B129B300CB00923DB7 /* BootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
 		9FF7F2582A2FBE920010D9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9FFB125B2A31B6F200F58C84 /* NeanderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeanderView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				9FFB125B2A31B6F200F58C84 /* NeanderView.swift */,
+				9FBC3B9C2A33003700D65C29 /* BinaryView.swift */,
 				9FFB125A2A31B6AE00F58C84 /* MetadataView */,
 			);
 			path = View;
@@ -332,6 +335,7 @@
 				9F5372AB2A3096B600B071CF /* AppView.swift in Sources */,
 				9F8E59E52A3014EC0005C30E /* User.swift in Sources */,
 				9FFB125E2A31B74D00F58C84 /* RootView.swift in Sources */,
+				9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */,
 				9F021F9A2A30BA2000DD6390 /* Machine.swift in Sources */,
 				9FFD29A729A68DD100B08B4E /* AlgorithmApp.swift in Sources */,
 				9F5372A82A30883800B071CF /* AppData.swift in Sources */,
