@@ -12,7 +12,7 @@ extension String {
 }
 
 struct NeanderView: View {
-  @StateObject var machine: Neander
+  @EnvironmentObject var machine: Neander
 
   var body: some View {
     VStack {
@@ -22,7 +22,7 @@ struct NeanderView: View {
             ForEach(0..<Neander.memSize / 2 , id: \.self) { i in
               GridRow {
                 Text(String(hexa: i, length: 2))
-                Text("\(machine.state.memory[i])")
+                MemCellView(value: $machine.state.memory[i], isHexa: true)
 
                 Spacer()
               }
@@ -32,18 +32,8 @@ struct NeanderView: View {
 
         Divider()
 
-        ScrollView {
-          Grid(alignment: .leading) {
-            ForEach(Neander.memSize / 2..<Neander.memSize, id: \.self) { i in
-              GridRow {
-                Text(String(hexa: i, length: 2))
-                Text("\(machine.state.memory[i])")
+        MemoryView(state: machine.state).padding(.leading, 4.0)
 
-                Spacer()
-              }
-            }
-          }
-        }.padding(.leading, 4.0)
       }.fontDesign(.monospaced)
 
       HStack {
@@ -62,8 +52,40 @@ struct NeanderView: View {
   }
 }
 
+struct MemoryView: View {
+  @ObservedObject var state: Neander.State
+
+  var body: some View {
+    ScrollView {
+      Grid(alignment: .leading) {
+        ForEach(Neander.memSize / 2..<Neander.memSize, id: \.self) { i in
+          GridRow {
+            Text(String(hexa: i, length: 2))
+            MemCellView(value: $state.memory[i], isHexa: false)
+
+            Spacer()
+          }
+        }
+      }
+    }
+  }
+}
+
+struct MemCellView: View {
+  @Binding var value: Int
+  let isHexa: Bool
+
+  var body: some View {
+    Text(
+      isHexa ?
+        String(hexa: value, length: 2) :
+        String(value)
+    )
+  }
+}
+
 struct ACView: View {
-  @StateObject var state: Neander.State
+  @ObservedObject var state: Neander.State
 
   var body: some View {
     HStack(spacing: 0.0) {
@@ -89,7 +111,7 @@ struct ACView: View {
 }
 
 struct PCView: View {
-  @StateObject var state: Neander.State
+  @ObservedObject var state: Neander.State
 
   var body: some View {
     HStack(spacing: 0.0) {
@@ -129,15 +151,27 @@ struct FlagsView: View {
 }
 
 struct NeanderView_Previews: PreviewProvider {
-  static var neander: Neander = {
+  static let machine: Neander = {
     let neander = Neander()
-//    neander.state.rAC = 0
-//    neander.state.rPC = 0
+
+    // .text
+    neander.state.memory[0x00] = 0x20
+    neander.state.memory[0x01] = 0x80
+    neander.state.memory[0x02] = 0x30
+    neander.state.memory[0x03] = 0x81
+    neander.state.memory[0x04] = 0x10
+    neander.state.memory[0x05] = 0x82
+    neander.state.memory[0x06] = 0xF0
+
+    // .data
+    neander.state.memory[0x80] = 19
+    neander.state.memory[0x81] = 23
+
     return neander
   }()
 
   static var previews: some View {
-    NeanderView(machine: neander)
-      .environmentObject(neander)
+    NeanderView()
+      .environmentObject(machine)
   }
 }

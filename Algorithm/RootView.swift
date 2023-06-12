@@ -4,9 +4,8 @@
 import SwiftUI
 
 struct RootView: View {
-  @EnvironmentObject var machine: Neander
   var body: some View {
-    NeanderView(machine: machine)
+    NeanderView()
   }
 }
 
