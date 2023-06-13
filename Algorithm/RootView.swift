@@ -13,6 +13,6 @@ struct RootView_Previews: PreviewProvider {
   static var machine = Neander()
   static var previews: some View {
     RootView()
-    .environmentObject(machine)
+      .environmentObject(machine)
   }
 }

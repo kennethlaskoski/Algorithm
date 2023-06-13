@@ -131,9 +131,9 @@ struct PCView: View {
 }
 
 struct FlagsView: View {
-  private let flags: [Flag]
+  private let flags: [Neander.Flag]
 
-  init(_ flags: [Flag]) {
+  init(_ flags: [Neander.Flag]) {
     self.flags = flags
   }
 
