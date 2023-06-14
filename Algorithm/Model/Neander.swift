@@ -5,16 +5,39 @@ import SwiftUI
 
 class Neander: ObservableObject {
   typealias Word = UInt8
+  typealias Data = UInt8
   static let memSize = (Word.min...Word.max).count
 
-  static let bitPattern = UInt(~Word.zero)
-  static let bitMask = Int(bitPattern: bitPattern)
+//  static let bitPattern = UInt(~Word.zero)
+//  static let bitMask = Int(bitPattern: bitPattern)
 
   struct Flag: Identifiable {
     let name: String
     let isOn: Bool
 
     var id: String { name }
+  }
+
+  struct Memory: MemoryType {
+    var startIndex: Word { .min }
+    var endIndex: Word { .max }
+
+    var rAddr: Word = 0
+    var rData: Data = 0
+
+    mutating func read() {
+      rData = storage[Int(rAddr)]
+    }
+
+    mutating func write() {
+      storage[Int(rAddr)] = rData
+    }
+
+    private var storage = [Data](repeating: 0, count: (Word.min...Word.max).count)
+    subscript(_ addr: Word) -> Data {
+      get { storage[Int(addr)] }
+      set { storage[Int(addr)] = newValue }
+    }
   }
 
   class State: ObservableObject {
@@ -24,19 +47,16 @@ class Neander: ObservableObject {
     }
 
     @Published
-    var memory = [Int](repeating: 0, count: Neander.memSize)
-
-    var rMemAddr = 0
-    var rMemData = 0
+    var memory = Memory()
 
     @Published
-    var rAC = 0
+    var rAC: Data = 0
     var zeroFlag: Flag { Flag(name: "Z", isOn: rAC == 0) }
-    var negativeFlag: Flag { Flag(name: "N", isOn: rAC > 0x7f) }
+    var negativeFlag: Flag { Flag(name: "N", isOn: rAC & 0x80 != 0) }
 
     @Published
-    var rPC = 0
-    var rI = 0
+    var rPC: Word = 0
+    var rI: Word = 0
 
     var runState: RunState = .stopped
   }
@@ -48,25 +68,25 @@ class Neander: ObservableObject {
 
   static let memRead: Transition = {
     var state = $0.state
-    state.rMemData = state.memory[state.rMemAddr]
+    state.memory.read()
   }
 
   static let memWrite: Transition = {
     var state = $0.state
-    state.memory[state.rMemAddr] = state.rMemData
+    state.memory.write()
   }
 
   static let fetch: Transition = {
     var state = $0.state
-    state.rMemAddr = state.rPC
+    state.memory.rAddr = state.rPC
     state.rPC += 1
-    state.rPC &= bitMask
+//    state.rPC &= bitMask
   }
 
   static let decode: Transition = {
     memRead($0)
     var state = $0.state
-    state.rI = state.rMemData
+    state.rI = state.memory.rData
   }
 
   static let fetchOperand: Transition = {
@@ -78,7 +98,7 @@ class Neander: ObservableObject {
     default:
       fetch($0)
       memRead($0)
-      state.rMemAddr = state.rMemData
+      state.memory.rAddr = state.memory.rData
       memRead($0)
     }
   }
@@ -88,7 +108,7 @@ class Neander: ObservableObject {
     let opCode = state.rI & 0b1111_0000
     switch opCode {
     case 0b0001_0000:
-      state.rMemData = state.rAC
+      state.memory.rData = state.rAC
       memWrite($0)
     case 0b0010_0000, 0b0011_0000, 0b0100_0000, 0b0101_0000, 0b0110_0000:
       ula($0)
@@ -106,19 +126,19 @@ class Neander: ObservableObject {
     let opCode = state.rI & 0b1111_0000
     switch opCode {
     case 0b0010_0000:
-      state.rAC = state.rMemData
+      state.rAC = state.memory.rData
     case 0b0011_0000:
-      state.rAC += state.rMemData
+      state.rAC += state.memory.rData
     case 0b0100_0000:
-      state.rAC |= state.rMemData
+      state.rAC |= state.memory.rData
     case 0b0101_0000:
-      state.rAC &= state.rMemData
+      state.rAC &= state.memory.rData
     case 0b0110_0000:
       state.rAC = ~state.rAC
     default:
       break
     }
-    state.rAC &= bitMask
+//    state.rAC &= bitMask
   }
 
   static let jmp: Transition = {
@@ -126,19 +146,19 @@ class Neander: ObservableObject {
     let opCode = state.rI & 0b1111_0000
     switch opCode {
     case 0b1000_0000:
-      state.rPC = state.rMemData
+      state.rPC = state.memory.rData
     case 0b1001_0000:
       if state.negativeFlag.isOn {
-        state.rPC = state.rMemData
+        state.rPC = state.memory.rData
       }
     case 0b1010_0000:
       if state.zeroFlag.isOn {
-        state.rPC = state.rMemData
+        state.rPC = state.memory.rData
       }
     default:
       break
     }
-    state.rPC &= bitMask
+//    state.rPC &= bitMask
   }
 
   static let cycle: Transition = {

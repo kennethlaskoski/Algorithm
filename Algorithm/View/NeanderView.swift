@@ -19,7 +19,7 @@ struct NeanderView: View {
       HStack(spacing: 0.0) {
         ScrollView {
           Grid(alignment: .leading) {
-            ForEach(0..<Neander.memSize / 2 , id: \.self) { i in
+            ForEach(machine.state.memory.startIndex...0x7F, id: \.self) { i in
               GridRow {
                 Text(String(hexa: i, length: 2))
                 MemCellView(value: $machine.state.memory[i], isHexa: true)
@@ -58,7 +58,7 @@ struct MemoryView: View {
   var body: some View {
     ScrollView {
       Grid(alignment: .leading) {
-        ForEach(Neander.memSize / 2..<Neander.memSize, id: \.self) { i in
+        ForEach(Neander.Word(0x80)...0xFF, id: \.self) { i in
           GridRow {
             Text(String(hexa: i, length: 2))
             MemCellView(value: $state.memory[i], isHexa: false)
@@ -71,15 +71,15 @@ struct MemoryView: View {
   }
 }
 
-struct MemCellView: View {
-  @Binding var value: Int
+struct MemCellView<T: FixedWidthInteger>: View {
+  @Binding var value: T
   let isHexa: Bool
 
   var body: some View {
     Text(
       isHexa ?
         String(hexa: value, length: 2) :
-        String(value)
+        String(Int8(bitPattern: UInt8(value)))
     )
   }
 }
@@ -91,12 +91,7 @@ struct ACView: View {
     HStack(spacing: 0.0) {
       HStack(spacing: 4.0) {
         Text("AC")
-        BinaryView(
-          number: Binding(
-            get: { state.rAC[0] },
-            set: { state.rAC = Int($0) }
-          )
-        )
+        BinaryView(number: $state.rAC)
       }
       HStack(spacing: 0.0) {
         Text(state.zeroFlag.name)
@@ -117,12 +112,7 @@ struct PCView: View {
     HStack(spacing: 0.0) {
       HStack(spacing: 4.0) {
         Text("PC")
-        BinaryView(
-          number: Binding(
-            get: { state.rPC[0] },
-            set: { state.rPC = Int($0) }
-          )
-        )
+        BinaryView(number: $state.rPC)
       }
 
       Spacer()

@@ -23,13 +23,10 @@ extension Flag {
   var id: String { name }
 }
 
-protocol Memory: RandomAccessCollection {
-  associatedtype Address: Register
-  associatedtype Data: Register
+protocol MemoryType: RandomAccessCollection {
+  var rAddr: Index { get set }
+  var rData: Element { get set }
 
-  var rAddress: Address { get set }
-  var rData: Data { get set }
-
-  func read()
-  func write()
+  mutating func read()
+  mutating func write()
 }

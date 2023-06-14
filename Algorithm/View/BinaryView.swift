@@ -3,65 +3,47 @@
 
 import SwiftUI
 
-extension UInt8 {
-  func mask(for bit: Int) -> Self { Self(1) << bit }
+//protocol BitCollection: RawRepresentable, RandomAccessCollection
+//where RawValue: FixedWidthInteger, Element == Bool, Index == Int {
+//  static func mask(for bit: Int) -> RawValue
+//}
+//
+//struct Bits<RawValue: FixedWidthInteger>: BitCollection {
+//  static func mask(for bit: Int) -> RawValue { RawValue(1) << bit }
+//
+//  private(set) var rawValue: RawValue
+//
+//  let startIndex = 0
+//  let endIndex = RawValue.bitWidth
+//
+//  subscript(_ bit: Int) -> Bool {
+//    get { rawValue & Self.mask(for: bit) != 0 }
+//    set {
+//      if newValue {
+//        rawValue |= Self.mask(for: bit)
+//      } else {
+//        rawValue &= ~Self.mask(for: bit)
+//      }
+//    }
+//  }
+//}
+//
 
-  subscript(_ bit: Int) -> Bool {
-    get { (self & mask(for: bit)) != 0 }
-    set {
-      if newValue {
-        self |= mask(for: bit)
-      } else {
-        self &= ~mask(for: bit)
-      }
-    }
+struct Bits<RawValue: FixedWidthInteger>: OptionSet {
+  let rawValue: RawValue
+  static subscript(_ bit: Int) -> Self {
+    Self(rawValue: 1 << bit)
   }
 }
 
 extension FixedWidthInteger {
-  subscript(_ byte: Int) -> UInt8 {
-    get { UInt8(truncatingIfNeeded: self >> (byte * 8)) }
+  var bits: Bits<Self> { Bits(rawValue: self) }
+  subscript(_ bit: Int) -> Bool {
+    get { bits.contains(Bits[bit]) }
     set {
-      let clearMask = Self(UInt8.max) << (byte * 8)
-      let setMask = Self(newValue) << (byte * 8)
-      self &= ~clearMask
-      self |= setMask
-    }
-  }
-}
-
-struct ByteView: View {
-  @Binding var byte: UInt8
-
-  var body: some View {
-    HStack(spacing: 0.0) {
-      ForEach((0..<byte.bitWidth).reversed(), id: \.self) { bit in
-        BitView(
-          isOn: Binding(
-            get: { byte[bit] },
-            set: { byte[bit] = $0 }
-          )
-        )
-      }
-    }
-  }
-}
-
-struct BinaryView<T: FixedWidthInteger>: View {
-  @Binding var number: T
-
-  var body: some View {
-    Grid {
-      ForEach(0..<number.bitWidth / 8, id: \.self) { byte in
-        GridRow {
-          ByteView(
-            byte: Binding(
-              get: { number[byte] },
-              set: { number[byte] = $0 }
-            )
-          )
-        }
-      }
+      self = newValue ?
+      bits.union(Bits[bit]).rawValue :
+      bits.symmetricDifference(Bits[bit]).rawValue
     }
   }
 }
@@ -81,8 +63,31 @@ struct BitView: View {
   }
 }
 
+struct BinaryView<T: FixedWidthInteger>: View {
+  @Binding var number: T
+
+  var body: some View {
+    Grid {
+      ForEach(0..<number.bitWidth / 8, id: \.self) { row in
+        GridRow {
+          HStack(spacing: 0.0) {
+            ForEach((0..<8).reversed(), id: \.self) { column in
+              BitView(
+                isOn: Binding(
+                  get: { number[row * 8 + column] },
+                  set: { number[row * 8 + column] = $0 }
+                )
+              )
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 struct BinaryView_Previews: PreviewProvider {
-  static let testValue: Int = 1 - 1 //- 1
+  static let testValue: Int = 1 - 1 - 1
 
   static var previews: some View {
     BinaryView(number: Binding.constant(testValue))
