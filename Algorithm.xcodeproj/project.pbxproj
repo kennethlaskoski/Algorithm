@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F021F9A2A30BA2000DD6390 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F021F992A30BA2000DD6390 /* Machine.swift */; };
+		9F11AD642A5388F7001D38A6 /* AppDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F11AD632A5388F7001D38A6 /* AppDevice.swift */; };
 		9F5372A82A30883800B071CF /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372A72A30883800B071CF /* AppData.swift */; };
 		9F5372AB2A3096B600B071CF /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372AA2A3096B600B071CF /* AppView.swift */; };
 		9F5372AD2A3096DA00B071CF /* SourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372AC2A3096DA00B071CF /* SourceView.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		9F021F992A30BA2000DD6390 /* Machine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Machine.swift; sourceTree = "<group>"; };
+		9F11AD632A5388F7001D38A6 /* AppDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDevice.swift; sourceTree = "<group>"; };
 		9F5372A72A30883800B071CF /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		9F5372AA2A3096B600B071CF /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		9F5372AC2A3096DA00B071CF /* SourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				9F5372A72A30883800B071CF /* AppData.swift */,
 				9F8E59E62A301A8B0005C30E /* Device.swift */,
 				9F8E59E42A3014EC0005C30E /* User.swift */,
+				9F11AD632A5388F7001D38A6 /* AppDevice.swift */,
 			);
 			path = Metadata;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F8E59E22A3008FE0005C30E /* InfoView.swift in Sources */,
+				9F11AD642A5388F7001D38A6 /* AppDevice.swift in Sources */,
 				9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */,
 				9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */,
 				9FFD29A929A68DD100B08B4E /* ContentView.swift in Sources */,
