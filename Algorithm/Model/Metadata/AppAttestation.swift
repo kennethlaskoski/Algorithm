@@ -34,7 +34,7 @@ actor Attester {
   private var persistedKeyID: String? { try? String(contentsOf: keyURL, encoding: .nonLossyASCII) }
   private var hasPersistedKeyID: Bool { persistedKeyID != nil }
 
-  init() async {
+  func generateKey() async {
     if persistedKeyID == nil {
       let generateID = Task {
         guard canAttest else { throw DCError(.featureUnsupported) }
