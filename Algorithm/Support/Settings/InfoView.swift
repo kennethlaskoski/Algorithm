@@ -7,7 +7,7 @@ struct InfoView: View {
   @EnvironmentObject var appData: AppData
 
   var body: some View {
-    List(appData.runs) {
+    List(appData.launches) {
       run in
       VStack {
         HStack {

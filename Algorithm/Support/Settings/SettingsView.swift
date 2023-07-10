@@ -3,11 +3,17 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SettingsView: View {
   @EnvironmentObject var appData: AppData
 
+  private enum Tabs: Hashable {
+    case app
+    case source
+    case info
+  }
+
   var body: some View {
-    if appData.isFirstRun {
+    if appData.isFirstLaunch {
       BootView()
     } else {
       TabView {
@@ -15,22 +21,27 @@ struct ContentView: View {
           .tabItem {
             Label("App", systemImage: "app")
           }
+          .tag(Tabs.app)
         SourceView()
           .tabItem {
             Label("Source", systemImage: "app.dashed")
           }
+          .tag(Tabs.source)
         InfoView()
           .tabItem {
             Label("Info", systemImage: "questionmark.app")
           }
+          .tag(Tabs.info)
       }
+      .padding(20)
+      .frame(width: 400.0, height: 300.0)
     }
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    SettingsView()
       .environmentObject(AppData())
   }
 }

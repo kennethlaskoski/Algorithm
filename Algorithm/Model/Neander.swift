@@ -64,6 +64,21 @@ class Neander: ObservableObject {
   @Published
   var state = State()
 
+  init() {
+    // .text
+    state.memory[0x00] = 0x20
+    state.memory[0x01] = 0x80
+    state.memory[0x02] = 0x30
+    state.memory[0x03] = 0x81
+    state.memory[0x04] = 0x10
+    state.memory[0x05] = 0x82
+    state.memory[0x06] = 0xF0
+
+    // .data
+    state.memory[0x80] = 19
+    state.memory[0x81] = 23
+  }
+
   typealias Transition = (Neander) -> ()
 
   static let memRead: Transition = {

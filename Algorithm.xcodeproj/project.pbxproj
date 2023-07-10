@@ -14,14 +14,14 @@
 		9F5372AD2A3096DA00B071CF /* SourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372AC2A3096DA00B071CF /* SourceView.swift */; };
 		9F83CC982A376DAE0033C136 /* Neander.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83CC972A376DAE0033C136 /* Neander.swift */; };
 		9F8E59E22A3008FE0005C30E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E12A3008FE0005C30E /* InfoView.swift */; };
-		9F8E59E52A3014EC0005C30E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E42A3014EC0005C30E /* User.swift */; };
-		9F8E59E72A301A8B0005C30E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E62A301A8B0005C30E /* Device.swift */; };
+		9F8E59E52A3014EC0005C30E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E42A3014EC0005C30E /* Account.swift */; };
 		9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC3B9C2A33003700D65C29 /* BinaryView.swift */; };
 		9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA03B129B300CB00923DB7 /* BootView.swift */; };
+		9FCEE7032A5B033E008E12A1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCEE7022A5B033E008E12A1 /* Person.swift */; };
 		9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125B2A31B6F200F58C84 /* NeanderView.swift */; };
 		9FFB125E2A31B74D00F58C84 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125D2A31B74D00F58C84 /* RootView.swift */; };
 		9FFD29A729A68DD100B08B4E /* AlgorithmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */; };
-		9FFD29A929A68DD100B08B4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A829A68DD100B08B4E /* ContentView.swift */; };
+		9FFD29A929A68DD100B08B4E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A829A68DD100B08B4E /* SettingsView.swift */; };
 		9FFD29AB29A68DD200B08B4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFD29AA29A68DD200B08B4E /* Assets.xcassets */; };
 		9FFD29AF29A68DD200B08B4E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFD29AE29A68DD200B08B4E /* Preview Assets.xcassets */; };
 		9FFD29B929A68DD200B08B4E /* AlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29B829A68DD200B08B4E /* AlgorithmTests.swift */; };
@@ -55,16 +55,16 @@
 		9F83CC972A376DAE0033C136 /* Neander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neander.swift; sourceTree = "<group>"; };
 		9F8C39512A3A39DC004DEAF0 /* Lab.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Lab.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9F8E59E12A3008FE0005C30E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		9F8E59E42A3014EC0005C30E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		9F8E59E62A301A8B0005C30E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		9F8E59E42A3014EC0005C30E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		9FBC3B9C2A33003700D65C29 /* BinaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryView.swift; sourceTree = "<group>"; };
 		9FCA03B129B300CB00923DB7 /* BootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
+		9FCEE7022A5B033E008E12A1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		9FF7F2582A2FBE920010D9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9FFB125B2A31B6F200F58C84 /* NeanderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeanderView.swift; sourceTree = "<group>"; };
 		9FFB125D2A31B74D00F58C84 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		9FFD29A329A68DD100B08B4E /* Algorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmApp.swift; sourceTree = "<group>"; };
-		9FFD29A829A68DD100B08B4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9FFD29A829A68DD100B08B4E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9FFD29AA29A68DD200B08B4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FFD29AC29A68DD200B08B4E /* Algorithm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Algorithm.entitlements; sourceTree = "<group>"; };
 		9FFD29AE29A68DD200B08B4E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -105,7 +105,6 @@
 			children = (
 				9FFB125B2A31B6F200F58C84 /* NeanderView.swift */,
 				9FBC3B9C2A33003700D65C29 /* BinaryView.swift */,
-				9FFB125A2A31B6AE00F58C84 /* MetadataView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,26 +127,51 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		9FFB12592A31B5F800F58C84 /* Metadata */ = {
+		9FCEE7002A5B0216008E12A1 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				9F11AD632A5388F7001D38A6 /* AppAttestation.swift */,
+				9FCEE7042A5C4648008E12A1 /* Account */,
+				9FCEE7012A5B0271008E12A1 /* Metrics */,
+				9FFB125A2A31B6AE00F58C84 /* Settings */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		9FCEE7012A5B0271008E12A1 /* Metrics */ = {
 			isa = PBXGroup;
 			children = (
 				9F5372A72A30883800B071CF /* AppData.swift */,
-				9F8E59E62A301A8B0005C30E /* Device.swift */,
-				9F8E59E42A3014EC0005C30E /* User.swift */,
-				9F11AD632A5388F7001D38A6 /* AppAttestation.swift */,
+			);
+			path = Metrics;
+			sourceTree = "<group>";
+		};
+		9FCEE7042A5C4648008E12A1 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				9F8E59E42A3014EC0005C30E /* Account.swift */,
+				9FCEE7022A5B033E008E12A1 /* Person.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		9FFB12592A31B5F800F58C84 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Metadata;
 			sourceTree = "<group>";
 		};
-		9FFB125A2A31B6AE00F58C84 /* MetadataView */ = {
+		9FFB125A2A31B6AE00F58C84 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				9F8E59E12A3008FE0005C30E /* InfoView.swift */,
+				9FFD29A829A68DD100B08B4E /* SettingsView.swift */,
 				9FCA03B129B300CB00923DB7 /* BootView.swift */,
 				9F5372AA2A3096B600B071CF /* AppView.swift */,
 				9F5372AC2A3096DA00B071CF /* SourceView.swift */,
+				9F8E59E12A3008FE0005C30E /* InfoView.swift */,
 			);
-			path = MetadataView;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		9FFD299A29A68DD100B08B4E = {
@@ -176,9 +200,9 @@
 			children = (
 				9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */,
 				9FFB125D2A31B74D00F58C84 /* RootView.swift */,
-				9FFD29A829A68DD100B08B4E /* ContentView.swift */,
 				9F5372A92A3095F600B071CF /* View */,
 				9F8E59E32A3014A40005C30E /* Model */,
+				9FCEE7002A5B0216008E12A1 /* Support */,
 				9FF7F2582A2FBE920010D9FD /* Info.plist */,
 				9FFD29AA29A68DD200B08B4E /* Assets.xcassets */,
 				9FFD29AC29A68DD200B08B4E /* Algorithm.entitlements */,
@@ -298,6 +322,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 9FFD299A29A68DD100B08B4E;
 			productRefGroup = 9FFD29A429A68DD100B08B4E /* Products */;
@@ -346,16 +371,16 @@
 				9F11AD642A5388F7001D38A6 /* AppAttestation.swift in Sources */,
 				9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */,
 				9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */,
-				9FFD29A929A68DD100B08B4E /* ContentView.swift in Sources */,
+				9FFD29A929A68DD100B08B4E /* SettingsView.swift in Sources */,
 				9F5372AD2A3096DA00B071CF /* SourceView.swift in Sources */,
-				9F8E59E72A301A8B0005C30E /* Device.swift in Sources */,
 				9F5372AB2A3096B600B071CF /* AppView.swift in Sources */,
-				9F8E59E52A3014EC0005C30E /* User.swift in Sources */,
+				9F8E59E52A3014EC0005C30E /* Account.swift in Sources */,
 				9FFB125E2A31B74D00F58C84 /* RootView.swift in Sources */,
 				9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */,
 				9F021F9A2A30BA2000DD6390 /* Machine.swift in Sources */,
 				9FFD29A729A68DD100B08B4E /* AlgorithmApp.swift in Sources */,
 				9F5372A82A30883800B071CF /* AppData.swift in Sources */,
+				9FCEE7032A5B033E008E12A1 /* Person.swift in Sources */,
 				9F83CC982A376DAE0033C136 /* Neander.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

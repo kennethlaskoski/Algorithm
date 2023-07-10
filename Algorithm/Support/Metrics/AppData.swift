@@ -3,26 +3,26 @@
 
 import Foundation
 
-struct AppRun: Identifiable, Codable {
+struct Launch: Identifiable, Codable {
   let id: UUID
   let date: Date
 }
 
 class AppData: ObservableObject {
-  @Published var runs: [AppRun] = []
+  @Published var launches: [Launch] = []
 
-  var isFirstRun: Bool { runs.count == 1 }
+  var isFirstLaunch: Bool { launches.count == 1 }
 
   init() {
     // Load the data model from the 'Data' data file found in the Documents directory.
     if let codedData = try? Data(contentsOf: dataURL()) {
       let decoder = JSONDecoder()
-      if let decoded = try? decoder.decode([AppRun].self, from: codedData) {
-        runs = decoded
+      if let decoded = try? decoder.decode([Launch].self, from: codedData) {
+        launches = decoded
       }
     }
 
-    runs.append(AppRun(id: UUID(), date: Date()))
+    launches.append(Launch(id: UUID(), date: Date()))
     save()
   }
 
@@ -42,7 +42,7 @@ class AppData: ObservableObject {
 
   func save() {
     let encoder = JSONEncoder()
-    if let encoded = try? encoder.encode(runs) {
+    if let encoded = try? encoder.encode(launches) {
       do {
         // Save the 'Data' data file to the Documents directory.
         try encoded.write(to: dataURL())

@@ -3,9 +3,9 @@
 
 import Foundation
 
-struct User: Identifiable, Codable {
+struct Person: Identifiable, Codable {
   let id: UUID
-  var nameComponents: PersonNameComponents
-
+  let nameComponents: PersonNameComponents
   var name: String { nameComponents.formatted() }
+  var monogram: String { nameComponents.formatted(.name(style: .abbreviated)) }
 }
