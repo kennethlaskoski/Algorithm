@@ -8,7 +8,7 @@ struct Launch: Identifiable, Codable {
   let date: Date
 }
 
-class AppData: ObservableObject {
+class LaunchRecord: ObservableObject {
   @Published var launches: [Launch] = []
 
   var isFirstLaunch: Bool { launches.count == 1 }

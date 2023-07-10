@@ -3,16 +3,16 @@
 
 import SwiftUI
 
-struct RootView: View {
+struct ContentView: View {
   var body: some View {
     NeanderView()
   }
 }
 
-struct RootView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
   static var machine = Neander()
   static var previews: some View {
-    RootView()
+    ContentView()
       .environmentObject(machine)
   }
 }

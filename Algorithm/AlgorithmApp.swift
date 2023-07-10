@@ -5,19 +5,19 @@ import SwiftUI
 
 @main
 struct AlgorithmApp: App {
-  private var appData = AppData()
+  private var launchRecord = LaunchRecord()
   @StateObject private var machine = Neander()
 
   var body: some Scene {
     WindowGroup {
-      RootView()
+      ContentView()
         .environmentObject(machine)
     }
 
     #if os(macOS)
     Settings {
       SettingsView()
-        .environmentObject(appData)
+        .environmentObject(launchRecord)
     }
     #endif
   }
