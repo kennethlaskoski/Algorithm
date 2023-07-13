@@ -1,6 +1,7 @@
 //  Copyright © 2023 Kenneth Laskoski
 //  SPDX-License-Identifier: Apache-2.0
 
+import System
 import DeviceCheck
 
 fileprivate let device = DCDevice.current
@@ -13,26 +14,34 @@ actor Checker {
   private var token: Data?
 
   init() async {
-    if LaunchRecord().isFirstLaunch && canCheck {
+    if LaunchLogger().isFirstLaunch && canCheck {
       token = try? await device.generateToken()
     }
   }
 }
 
-fileprivate let keyFilename = "attestation-key-id"
-fileprivate let keyURL: URL = {
-  let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-  precondition(urls.count > 0, "Failed to access Application Support directory")
-  let result = urls[0].appending(path: keyFilename, directoryHint: .notDirectory)
-  precondition(result.isFileURL, "Failed to access Application Support directory")
-  return result
-}()
-
-fileprivate let service = DCAppAttestService.shared
-
-// The app atterster actor
+/// The Attester actor performs
+/// the app attestation tasks
 actor Attester {
-  var canAttest: Bool { service.isSupported }
+  private let service = DCAppAttestService.shared
+  private let keyFilename = ".attestation-key-id"
+  private lazy var keyURL: URL = {
+    URL(
+      filePath: keyFilename,
+      directoryHint: .notDirectory,
+      relativeTo: .applicationSupportDirectory
+    )
+  }()
+
+  private typealias KeyID = String
+
+  private var keyID: KeyID {
+    get async throws {
+      guard service.isSupported else { throw DCError(.featureUnsupported) }
+      return try KeyID(contentsOf: keyURL)
+    }
+  }
+
   private var hasPersistedKeyID: Bool { persistedKeyID != nil }
   private lazy var persistedKeyID: String? = { try? String(contentsOf: keyURL, encoding: .nonLossyASCII) }()
 
@@ -42,7 +51,7 @@ actor Attester {
     }
 
     let generateID = Task {
-      guard canAttest else { throw DCError(.featureUnsupported) }
+      guard service.isSupported else { throw DCError(.featureUnsupported) }
       return try await service.generateKey()
     }
 

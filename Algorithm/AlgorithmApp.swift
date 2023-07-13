@@ -5,7 +5,7 @@ import SwiftUI
 
 @main
 struct AlgorithmApp: App {
-  private var launchRecord = LaunchRecord()
+  private var launchRecord = LaunchLogger()
   @StateObject private var machine = Neander()
 
   var body: some Scene {

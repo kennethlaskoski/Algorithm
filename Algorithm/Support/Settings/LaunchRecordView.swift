@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct LaunchRecordView: View {
-  @EnvironmentObject var launchRecord: LaunchRecord
+  @EnvironmentObject var launchRecord: LaunchLogger
 
   var body: some View {
     List(launchRecord.launches) {
@@ -24,6 +24,6 @@ struct LaunchRecordView: View {
 struct LaunchRecordView_Previews: PreviewProvider {
   static var previews: some View {
     LaunchRecordView()
-      .environmentObject(LaunchRecord())
+      .environmentObject(LaunchLogger())
   }
 }

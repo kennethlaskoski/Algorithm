@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-  @EnvironmentObject var launchRecord: LaunchRecord
+  @EnvironmentObject var launchRecord: LaunchLogger
 
   private enum Tabs: Hashable {
     case app
@@ -42,6 +42,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
     SettingsView()
-      .environmentObject(LaunchRecord())
+      .environmentObject(LaunchLogger())
   }
 }
