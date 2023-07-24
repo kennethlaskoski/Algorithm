@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-  @EnvironmentObject var launchRecord: LaunchLogger
+  @EnvironmentObject private var appDelegate: ApplicationDelegate
 
   private enum Tabs: Hashable {
     case app
@@ -13,7 +13,7 @@ struct SettingsView: View {
   }
 
   var body: some View {
-    if launchRecord.isFirstLaunch {
+    if appDelegate.isFirstLaunch {
       BootView()
     } else {
       TabView {
@@ -27,7 +27,7 @@ struct SettingsView: View {
             Label("Source", systemImage: "app.dashed")
           }
           .tag(Tabs.source)
-        LaunchRecordView()
+        LaunchHistoryView()
           .tabItem {
             Label("Info", systemImage: "questionmark.app")
           }
@@ -42,6 +42,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
     SettingsView()
-      .environmentObject(LaunchLogger())
+    .environmentObject(ApplicationDelegate())
   }
 }

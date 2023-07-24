@@ -3,11 +3,11 @@
 
 import SwiftUI
 
-struct LaunchRecordView: View {
-  @EnvironmentObject var launchRecord: LaunchLogger
+struct LaunchHistoryView: View {
+  @EnvironmentObject private var appDelegate: ApplicationDelegate
 
   var body: some View {
-    List(launchRecord.launches) {
+    List(appDelegate.launches) {
       launch in
       VStack {
         HStack {
@@ -21,9 +21,9 @@ struct LaunchRecordView: View {
   }
 }
 
-struct LaunchRecordView_Previews: PreviewProvider {
+struct LaunchHistoryView_Previews: PreviewProvider {
   static var previews: some View {
-    LaunchRecordView()
-      .environmentObject(LaunchLogger())
+    LaunchHistoryView()
+    .environmentObject(ApplicationDelegate())
   }
 }

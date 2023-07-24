@@ -9,18 +9,18 @@
 /* Begin PBXBuildFile section */
 		9F021F9A2A30BA2000DD6390 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F021F992A30BA2000DD6390 /* Machine.swift */; };
 		9F11AD642A5388F7001D38A6 /* Attestation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F11AD632A5388F7001D38A6 /* Attestation.swift */; };
-		9F5372A82A30883800B071CF /* LaunchLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372A72A30883800B071CF /* LaunchLogger.swift */; };
+		9F5372A82A30883800B071CF /* ApplicationLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372A72A30883800B071CF /* ApplicationLaunch.swift */; };
 		9F5372AB2A3096B600B071CF /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372AA2A3096B600B071CF /* AppView.swift */; };
 		9F5372AD2A3096DA00B071CF /* SourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372AC2A3096DA00B071CF /* SourceView.swift */; };
-		9F585E512A5F466F00CF13F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585E502A5F466F00CF13F6 /* AppDelegate.swift */; };
+		9F585E512A5F466F00CF13F6 /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585E502A5F466F00CF13F6 /* ApplicationDelegate.swift */; };
 		9F83CC982A376DAE0033C136 /* Neander.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83CC972A376DAE0033C136 /* Neander.swift */; };
-		9F8E59E22A3008FE0005C30E /* LaunchRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E12A3008FE0005C30E /* LaunchRecordView.swift */; };
+		9F8E59E22A3008FE0005C30E /* LaunchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E59E12A3008FE0005C30E /* LaunchHistoryView.swift */; };
 		9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC3B9C2A33003700D65C29 /* BinaryView.swift */; };
 		9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA03B129B300CB00923DB7 /* BootView.swift */; };
 		9FCEE7032A5B033E008E12A1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCEE7022A5B033E008E12A1 /* Person.swift */; };
 		9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125B2A31B6F200F58C84 /* NeanderView.swift */; };
 		9FFB125E2A31B74D00F58C84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125D2A31B74D00F58C84 /* ContentView.swift */; };
-		9FFD29A729A68DD100B08B4E /* AlgorithmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */; };
+		9FFD29A729A68DD100B08B4E /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A629A68DD100B08B4E /* Application.swift */; };
 		9FFD29A929A68DD100B08B4E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A829A68DD100B08B4E /* SettingsView.swift */; };
 		9FFD29AB29A68DD200B08B4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFD29AA29A68DD200B08B4E /* Assets.xcassets */; };
 		9FFD29AF29A68DD200B08B4E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFD29AE29A68DD200B08B4E /* Preview Assets.xcassets */; };
@@ -49,13 +49,13 @@
 /* Begin PBXFileReference section */
 		9F021F992A30BA2000DD6390 /* Machine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Machine.swift; sourceTree = "<group>"; };
 		9F11AD632A5388F7001D38A6 /* Attestation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attestation.swift; sourceTree = "<group>"; };
-		9F5372A72A30883800B071CF /* LaunchLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchLogger.swift; sourceTree = "<group>"; };
+		9F5372A72A30883800B071CF /* ApplicationLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationLaunch.swift; sourceTree = "<group>"; };
 		9F5372AA2A3096B600B071CF /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		9F5372AC2A3096DA00B071CF /* SourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceView.swift; sourceTree = "<group>"; };
-		9F585E502A5F466F00CF13F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9F585E502A5F466F00CF13F6 /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		9F83CC972A376DAE0033C136 /* Neander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neander.swift; sourceTree = "<group>"; };
 		9F8C39512A3A39DC004DEAF0 /* Lab.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Lab.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		9F8E59E12A3008FE0005C30E /* LaunchRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRecordView.swift; sourceTree = "<group>"; };
+		9F8E59E12A3008FE0005C30E /* LaunchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchHistoryView.swift; sourceTree = "<group>"; };
 		9FBC3B9C2A33003700D65C29 /* BinaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryView.swift; sourceTree = "<group>"; };
 		9FCA03B129B300CB00923DB7 /* BootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
 		9FCEE7022A5B033E008E12A1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		9FFB125B2A31B6F200F58C84 /* NeanderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeanderView.swift; sourceTree = "<group>"; };
 		9FFB125D2A31B74D00F58C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9FFD29A329A68DD100B08B4E /* Algorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmApp.swift; sourceTree = "<group>"; };
+		9FFD29A629A68DD100B08B4E /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		9FFD29A829A68DD100B08B4E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9FFD29AA29A68DD200B08B4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FFD29AC29A68DD200B08B4E /* Algorithm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Algorithm.entitlements; sourceTree = "<group>"; };
@@ -127,22 +127,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		9FCEE7002A5B0216008E12A1 /* Support */ = {
+		9FCEE7002A5B0216008E12A1 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				9FCEE7022A5B033E008E12A1 /* Person.swift */,
+				9FFD29A629A68DD100B08B4E /* Application.swift */,
 				9F11AD632A5388F7001D38A6 /* Attestation.swift */,
+				9FCEE7022A5B033E008E12A1 /* Person.swift */,
 				9FCEE7012A5B0271008E12A1 /* Lifecycle */,
 				9FFB125A2A31B6AE00F58C84 /* Settings */,
 			);
-			path = Support;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		9FCEE7012A5B0271008E12A1 /* Lifecycle */ = {
 			isa = PBXGroup;
 			children = (
-				9F5372A72A30883800B071CF /* LaunchLogger.swift */,
-				9F585E502A5F466F00CF13F6 /* AppDelegate.swift */,
+				9F585E502A5F466F00CF13F6 /* ApplicationDelegate.swift */,
+				9F5372A72A30883800B071CF /* ApplicationLaunch.swift */,
 			);
 			path = Lifecycle;
 			sourceTree = "<group>";
@@ -154,7 +155,7 @@
 				9FCA03B129B300CB00923DB7 /* BootView.swift */,
 				9F5372AA2A3096B600B071CF /* AppView.swift */,
 				9F5372AC2A3096DA00B071CF /* SourceView.swift */,
-				9F8E59E12A3008FE0005C30E /* LaunchRecordView.swift */,
+				9F8E59E12A3008FE0005C30E /* LaunchHistoryView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -183,10 +184,9 @@
 		9FFD29A529A68DD100B08B4E /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
-				9FFD29A629A68DD100B08B4E /* AlgorithmApp.swift */,
-				9F5372A92A3095F600B071CF /* View */,
+				9FCEE7002A5B0216008E12A1 /* Application */,
 				9F8E59E32A3014A40005C30E /* Model */,
-				9FCEE7002A5B0216008E12A1 /* Support */,
+				9F5372A92A3095F600B071CF /* View */,
 				9FF7F2582A2FBE920010D9FD /* Info.plist */,
 				9FFD29AA29A68DD200B08B4E /* Assets.xcassets */,
 				9FFD29AC29A68DD200B08B4E /* Algorithm.entitlements */,
@@ -236,6 +236,8 @@
 			dependencies = (
 			);
 			name = Algorithm;
+			packageProductDependencies = (
+			);
 			productName = Algorithm;
 			productReference = 9FFD29A329A68DD100B08B4E /* Algorithm.app */;
 			productType = "com.apple.product-type.application";
@@ -309,6 +311,8 @@
 				"pt-BR",
 			);
 			mainGroup = 9FFD299A29A68DD100B08B4E;
+			packageReferences = (
+			);
 			productRefGroup = 9FFD29A429A68DD100B08B4E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -351,19 +355,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F8E59E22A3008FE0005C30E /* LaunchRecordView.swift in Sources */,
+				9F8E59E22A3008FE0005C30E /* LaunchHistoryView.swift in Sources */,
 				9F11AD642A5388F7001D38A6 /* Attestation.swift in Sources */,
 				9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */,
 				9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */,
 				9FFD29A929A68DD100B08B4E /* SettingsView.swift in Sources */,
 				9F5372AD2A3096DA00B071CF /* SourceView.swift in Sources */,
 				9F5372AB2A3096B600B071CF /* AppView.swift in Sources */,
-				9F585E512A5F466F00CF13F6 /* AppDelegate.swift in Sources */,
+				9F585E512A5F466F00CF13F6 /* ApplicationDelegate.swift in Sources */,
 				9FFB125E2A31B74D00F58C84 /* ContentView.swift in Sources */,
 				9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */,
 				9F021F9A2A30BA2000DD6390 /* Machine.swift in Sources */,
-				9FFD29A729A68DD100B08B4E /* AlgorithmApp.swift in Sources */,
-				9F5372A82A30883800B071CF /* LaunchLogger.swift in Sources */,
+				9FFD29A729A68DD100B08B4E /* Application.swift in Sources */,
+				9F5372A82A30883800B071CF /* ApplicationLaunch.swift in Sources */,
 				9FCEE7032A5B033E008E12A1 /* Person.swift in Sources */,
 				9F83CC982A376DAE0033C136 /* Neander.swift in Sources */,
 			);
@@ -525,6 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Algorithm/Algorithm.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -568,6 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Algorithm/Algorithm.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;

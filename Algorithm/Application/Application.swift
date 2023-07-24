@@ -4,9 +4,15 @@
 import SwiftUI
 
 @main
-struct AlgorithmApp: App {
-  private var launchRecord = LaunchLogger()
+struct Application: App {
   @StateObject private var machine = Neander()
+
+#if canImport(AppKit)
+  @NSApplicationDelegateAdaptor private var appDelegate: ApplicationDelegate
+#endif
+#if canImport(UIKit)
+  @UIApplicationDelegateAdaptor private var appDelegate: ApplicationDelegate
+#endif
 
   var body: some Scene {
     WindowGroup {
@@ -17,7 +23,6 @@ struct AlgorithmApp: App {
     #if os(macOS)
     Settings {
       SettingsView()
-        .environmentObject(launchRecord)
     }
     #endif
   }

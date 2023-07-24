@@ -14,7 +14,7 @@ actor Checker {
   private var token: Data?
 
   init() async {
-    if LaunchLogger().isFirstLaunch && canCheck {
+    if canCheck {
       token = try? await device.generateToken()
     }
   }
