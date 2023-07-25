@@ -5,20 +5,29 @@ import Foundation
 import os
 
 class ApplicationDelegate: NSObject, ObservableObject {
-  var launchHistory: [ApplicationLaunch] = []
-  var isFirstLaunch: Bool { launchHistory.count == 1 }
+  private var launchHistory = LaunchHistory()
+
+  @Published var launches: [ApplicationLaunch] = []
+  @Published var isFirstLaunch: Bool = false
 
   private let logger = Logger(OSLog(subsystem: "br.net.ken.algorithm.lifecycle", category: .pointsOfInterest))
 
   func willFinishLaunching() {
     logger.trace("Application will finish launching")
+
     UserDefaults.standard.register(defaults: [
-      "LaunchesCount": 0,
       "OnboardingPhase": 0,
     ])
   }
 
   func didFinishLaunching() {
+    Task {
+      await launchHistory.append(
+        ApplicationLaunch(id: UUID(), seq: launchHistory.count, date: Date(), serverDate: nil, person: nil)
+      )
+      launches = await launchHistory.launches
+    }
+
     logger.trace("Application did finish launchig")
   }
 }
@@ -52,38 +61,3 @@ extension ApplicationDelegate: UIApplicationDelegate {
   }
 }
 #endif
-
-private extension ApplicationLaunch {
-  private struct LaunchesFile {
-    var data: Data?
-
-    init() {
-      data = try? Data(contentsOf: url, options: Data.ReadingOptions.mappedIfSafe)
-    }
-
-    private let url = URL(
-      filePath: ".launches.json",
-      directoryHint: .notDirectory,
-      relativeTo: .applicationSupportDirectory
-    )
-  }
-
-  static let fileData = LaunchesFile().data
-}
-
-private extension ApplicationDelegate {
-  func loadPreviousLaunches() {
-    guard let data = ApplicationLaunch.fileData else { return }
-    let decoder = JSONDecoder()
-    if let decoded = try? decoder.decode([ApplicationLaunch].self, from: data) {
-      launchHistory = decoded
-    }
-  }
-}
-
-extension ApplicationDelegate {
-  func appendLaunch() {
-    launchHistory.append(ApplicationLaunch(id: UUID(), seq: launchHistory.count, date: Date(), serverDate: nil, person: nil))
-//      save()
-  }
-}
