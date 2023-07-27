@@ -5,10 +5,11 @@ import Foundation
 import os
 
 class ApplicationDelegate: NSObject, ObservableObject {
-  private var launchHistory = LaunchHistory()
+  @Published var launches: [LaunchRecord] = []
+  var isFirstLaunch: Bool { launches.count == 1 }
 
-  @Published var launches: [ApplicationLaunch] = []
-  @Published var isFirstLaunch: Bool = false
+  //  private var launchHistory = JSONFileLaunchHistory()
+  private var loadLaunchHistory: Task<JSONFileLaunchHistory, Never>!
 
   private let logger = Logger(OSLog(subsystem: "br.net.ken.algorithm.lifecycle", category: .pointsOfInterest))
 
@@ -18,14 +19,17 @@ class ApplicationDelegate: NSObject, ObservableObject {
     UserDefaults.standard.register(defaults: [
       "OnboardingPhase": 0,
     ])
+
+    loadLaunchHistory = Task {
+      JSONFileLaunchHistory()
+    }
   }
 
   func didFinishLaunching() {
     Task {
-      await launchHistory.append(
-        ApplicationLaunch(id: UUID(), seq: launchHistory.count, date: Date(), serverDate: nil, person: nil)
-      )
-      launches = await launchHistory.launches
+      var launchHistory = await loadLaunchHistory.value
+      await launchHistory += LaunchRecord()
+      launches = await launchHistory.records
     }
 
     logger.trace("Application did finish launchig")

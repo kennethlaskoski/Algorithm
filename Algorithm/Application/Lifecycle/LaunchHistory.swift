@@ -3,19 +3,50 @@
 
 import Foundation
 
-struct ApplicationLaunch: Identifiable, Codable {
+struct LaunchRecord: Identifiable, Codable {
   let id: UUID
-  let seq: Int
   let date: Date
-  let serverDate: Date?
   let person: Person?
+
+  init(date: Date = .now, person: Person? = nil) {
+    self.id = UUID()
+    self.date = date
+    self.person = person
+  }
 }
 
-actor LaunchHistory {
-  var launches: [ApplicationLaunch] = []
-  var count: Int { launches.count }
+protocol LaunchHistory {
+  associatedtype RecordSequence: Sequence<LaunchRecord>
 
-  private struct LaunchesFile {
+  var records: RecordSequence { get async }
+  mutating func append(_ new: LaunchRecord) async
+}
+
+extension LaunchHistory {
+  static func += (lhs: inout Self, rhs: LaunchRecord) async {
+    await lhs.append(rhs)
+  }
+}
+
+//func += (_ lhs: LaunchHistory, _ rhs: LaunchRecord) async {
+//  await lhs.append(rhs)
+//}
+
+actor JSONFileLaunchHistory: LaunchHistory {
+  var records: [LaunchRecord] = []
+
+  init() {
+    guard let data = storage.data else { return }
+    guard let decoded = try? JSONDecoder().decode([LaunchRecord].self, from: data) else { return }
+    records = decoded
+  }
+
+  func append(_ launch: LaunchRecord) {
+    records.append(launch)
+    storage.write(records)
+  }
+
+  private struct FileStorage {
     var data: Data?
 
     init() {
@@ -23,12 +54,12 @@ actor LaunchHistory {
     }
 
     private let url = URL(
-      filePath: ".launches.json",
+      filePath: "launch-history.json",
       directoryHint: .notDirectory,
       relativeTo: .applicationSupportDirectory
     )
 
-    func write(_ launches: [ApplicationLaunch]) {
+    func write(_ launches: [LaunchRecord]) {
       let encoder = JSONEncoder()
       if let encoded = try? encoder.encode(launches) {
         do {
@@ -41,27 +72,5 @@ actor LaunchHistory {
     }
   }
 
-  private var file = LaunchesFile()
-
-  init() {
-    guard let data = file.data else { return }
-    guard let decoded = try? JSONDecoder().decode([ApplicationLaunch].self, from: data) else { return }
-    launches = decoded
-  }
-
-  func append(_ launch: ApplicationLaunch) {
-    launches.append(launch)
-    file.write(launches)
-  }
+  private let storage = FileStorage()
 }
-//class LaunchLogger: ObservableObject {
-//  @Published var launches: [Launch] = []
-//
-//  var isFirstLaunch: Bool { launches.count == 1 }
-//
-//
-//
-//
-//  func save() {
-//  }
-//}
