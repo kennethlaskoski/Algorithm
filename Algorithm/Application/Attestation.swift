@@ -4,22 +4,6 @@
 import System
 import DeviceCheck
 
-fileprivate let device = DCDevice.current
-
-/// The device checker actor
-actor Checker {
-  /// True if the current device
-  /// supports being checked
-  let canCheck = device.isSupported
-  private var token: Data?
-
-  init() async {
-    if canCheck {
-      token = try? await device.generateToken()
-    }
-  }
-}
-
 /// The Attester actor performs
 /// the app attestation tasks
 actor Attester {

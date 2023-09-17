@@ -7,14 +7,14 @@ struct LaunchHistoryView: View {
   @EnvironmentObject private var appDelegate: ApplicationDelegate
 
   var body: some View {
-    List(appDelegate.launches) {
-      launch in
+    List(appDelegate.launchHistory) {
+      record in
       VStack {
         HStack {
-          Text("\(launch.date.formatted(date: .abbreviated, time: .shortened))")
+          Text("\(record.launch.date.formatted(date: .abbreviated, time: .shortened))")
           Spacer()
         }
-        Text("\(launch.id)")
+        Text("\(record.id)")
       }
       .font(.footnote)
     }

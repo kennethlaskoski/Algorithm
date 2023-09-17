@@ -4,35 +4,39 @@
 import Foundation
 import os
 
+extension UUID {
+  static let null = UUID(uuid: UUID_NULL)
+  var isNull: Bool { self == .null }
+}
+
 class ApplicationDelegate: NSObject, ObservableObject {
-  @Published var launches: [LaunchRecord] = []
-  var isFirstLaunch: Bool { launches.count == 1 }
+  private let logger = Logger(OSLog(subsystem: "br.net.ken.algorithm", category: .pointsOfInterest))
 
-  //  private var launchHistory = JSONFileLaunchHistory()
-  private var loadLaunchHistory: Task<JSONFileLaunchHistory, Never>!
+  private let launch = Launch()
+  private func recordLaunch(after lastID: UUID) async {
+    let tracker = Launch.Tracker()
+    Defaults.lastLaunchID = await tracker.record(launch, after: lastID)
+    launchHistory = await tracker.history
+  }
 
-  private let logger = Logger(OSLog(subsystem: "br.net.ken.algorithm.lifecycle", category: .pointsOfInterest))
+  @Published var launchHistory: Launch.History = []
+  @Published var isFirstLaunch = true
 
   func willFinishLaunching() {
     logger.trace("Application will finish launching")
 
-    UserDefaults.standard.register(defaults: [
-      "OnboardingPhase": 0,
-    ])
+    registerDefaults()
 
-    loadLaunchHistory = Task {
-      JSONFileLaunchHistory()
+    let lastLaunchID = Defaults.lastLaunchID
+    isFirstLaunch = lastLaunchID.isNull
+
+    Task.detached {
+      await self.recordLaunch(after: lastLaunchID)
     }
   }
 
   func didFinishLaunching() {
-    Task {
-      var launchHistory = await loadLaunchHistory.value
-      await launchHistory += LaunchRecord()
-      launches = await launchHistory.records
-    }
-
-    logger.trace("Application did finish launchig")
+    logger.trace("Application did finish launching")
   }
 }
 
