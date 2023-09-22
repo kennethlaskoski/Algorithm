@@ -14,20 +14,25 @@ class ApplicationDelegate: NSObject, ObservableObject {
 
   private let launch = Launch()
   private func recordLaunch(after lastID: UUID) async {
-    let tracker = Launch.Tracker()
-    Defaults.lastLaunchID = await tracker.record(launch, after: lastID)
-    launchHistory = await tracker.history
+    let recorder = Launch.Recorder()
+    await recorder.record(launch, after: lastID)
+    launchHistory = await recorder.history
   }
 
   @Published var launchHistory: Launch.History = []
   @Published var isFirstLaunch = true
 
   func willFinishLaunching() {
-    logger.trace("Application will finish launching")
+    logger.trace("Application will finish launching...")
 
-    registerDefaults()
+    let defaults: [Default<Any>] = [
+      Default(key: "lastLaunchID", defaultValue: UUID.null.uuidString, getter: { "" }, setter: {_ in}),
+      Default(key: "onboardingPhase", defaultValue: 0, getter: { 0 }, setter: {_ in}),
+    ]
 
-    let lastLaunchID = Defaults.lastLaunchID
+    Defaults(defaults: defaults).register()
+
+    let lastLaunchID = Launch.Recorder.lastID
     isFirstLaunch = lastLaunchID.isNull
 
     Task.detached {
@@ -36,7 +41,14 @@ class ApplicationDelegate: NSObject, ObservableObject {
   }
 
   func didFinishLaunching() {
-    logger.trace("Application did finish launching")
+    let launchLog =
+"""
+Date: \(launch.date)
+Person: \(launch.person)
+Device: \(launch.device)
+"""
+    logger.trace("Application launch: \n\(launchLog)")
+    logger.trace("Application did finish launching.")
   }
 }
 

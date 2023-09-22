@@ -1,9 +1,5 @@
-//
-//  Device.swift
-//  Algorithm
-//
-//  Created by Kenneth Laskoski on 2023-08-17.
-//
+//  Copyright © 2023 Kenneth Laskoski
+//  SPDX-License-Identifier: Apache-2.0
 
 import Foundation
 import DeviceCheck

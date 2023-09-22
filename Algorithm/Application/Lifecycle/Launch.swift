@@ -2,6 +2,7 @@
 //  SPDX-License-Identifier: Apache-2.0
 
 import Foundation
+import os
 
 struct Launch: Sendable, Codable {
   let date: Date
@@ -32,21 +33,24 @@ extension Launch {
 }
 
 extension Launch {
-  actor Tracker {
+  actor Recorder {
+    private static let logger = Logger(OSLog(subsystem: "br.net.ken.algorithm", category: "Launch.Recorder"))
+
     private let storage = JSONFile()
+
     var history: History {
       get async { await storage.history }
     }
 
-    func record(_ launch: Launch, after lastID: UUID) async -> UUID {
+    func record(_ launch: Launch, after lastID: UUID) async {
       let newRecord = Launch.Record(launch, after: lastID)
       await storage.record(newRecord)
-      return newRecord.id
+      Recorder.lastID = newRecord.id
     }
   }
 }
 
-private extension Launch.Tracker {
+private extension Launch.Recorder {
   private actor JSONFile {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
@@ -88,4 +92,51 @@ private extension Launch.Tracker {
       }
     }
   }
+}
+
+extension Launch.Recorder {
+  private static let defaultKey = "lastLaunchID"
+  private static let defaultValue = UUID.null
+
+  static private(set) var lastID: UUID {
+    get {
+      let lastLaunchIDString = defaultID.value
+
+      // parse last launch ID string from user defaults
+      guard let lastLaunchID = UUID(uuidString: lastLaunchIDString) else {
+        logger.critical("Application will crash - error parsing last launch ID string from user defaults")
+        fatalError("Failure parsing user defaults")
+      }
+      logger.trace("Last launch ID: \(lastLaunchID)")
+
+      return lastLaunchID
+    }
+
+    set {
+      defaultID.set(newValue: newValue.uuidString)
+    }
+  }
+
+  private static let defaultID = Default(
+    key: defaultKey,
+    defaultValue: defaultValue.uuidString,
+
+    getter: {
+      logger.trace("Retrieving last launch ID from user defaults...")
+
+      // retrieve last launch ID string from user defaults
+      guard let lastLaunchIDString = UserDefaults.standard.string(forKey: defaultKey) else {
+        logger.critical("Application will crash - error retrieving last launch ID string from user defaults.")
+        fatalError("Failure reading user defaults")
+      }
+      logger.trace(#"User defaults string for key "\#(defaultKey)": "\#(lastLaunchIDString)""#)
+
+      return lastLaunchIDString
+    },
+
+    setter: { newValue in
+      logger.trace("Writing launch ID \(newValue) to user defaults")
+      UserDefaults.standard.set(newValue, forKey: defaultKey)
+    }
+  )
 }
