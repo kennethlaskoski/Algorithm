@@ -3,17 +3,15 @@
 
 import SwiftUI
 
-struct LaunchHistoryView: View {
+struct LaunchesView: View {
   @EnvironmentObject private var appDelegate: ApplicationDelegate
 
   var body: some View {
     List(appDelegate.launchHistory) {
       record in
-      VStack {
-        HStack {
-          Text("\(record.launch.date.formatted(date: .abbreviated, time: .shortened))")
-          Spacer()
-        }
+      HStack {
+        Text("\(record.launch.date.formatted(date: .abbreviated, time: .shortened))")
+        Spacer()
         Text("\(record.id)")
       }
       .font(.footnote)
@@ -21,9 +19,9 @@ struct LaunchHistoryView: View {
   }
 }
 
-struct LaunchHistoryView_Previews: PreviewProvider {
+struct LaunchesView_Previews: PreviewProvider {
   static var previews: some View {
-    LaunchHistoryView()
+    LaunchesView()
     .environmentObject(ApplicationDelegate())
   }
 }

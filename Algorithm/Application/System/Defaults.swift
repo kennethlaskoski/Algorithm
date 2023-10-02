@@ -4,6 +4,26 @@
 import Foundation
 import os
 
+@propertyWrapper
+struct UserDefault<S, T> {
+  let key: String
+  let defaultValue: T
+
+  let to: (T) -> S
+  let from: (S) -> T
+
+  var wrappedValue: T {
+    get {
+      let storedValue = UserDefaults.standard.value(forKey: key) as! S
+      return from(storedValue)
+    }
+    set {
+      let newStoredValue = to(newValue)
+      UserDefaults.standard.set(newStoredValue, forKey: key)
+    }
+  }
+}
+
 struct Default<T> {
   let key: String
   let defaultValue: T

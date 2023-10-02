@@ -4,11 +4,6 @@
 import Foundation
 import os
 
-extension UUID {
-  static let null = UUID(uuid: UUID_NULL)
-  var isNull: Bool { self == .null }
-}
-
 class ApplicationDelegate: NSObject, ObservableObject {
   private let logger = Logger(OSLog(subsystem: "br.net.ken.algorithm", category: .pointsOfInterest))
 

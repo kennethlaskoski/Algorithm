@@ -7,35 +7,31 @@ struct SettingsView: View {
   @EnvironmentObject private var appDelegate: ApplicationDelegate
 
   private enum Tabs: Hashable {
-    case app
-    case source
-    case info
+    case systemInfo
+    case launches
+    case boot
   }
 
   var body: some View {
-    if appDelegate.isFirstLaunch {
+    TabView {
+      SystemInfoView()
+        .tabItem {
+          Label("System Info", systemImage: "info.circle")
+        }
+        .tag(Tabs.systemInfo)
+      LaunchesView()
+        .tabItem {
+          Label("Launches", systemImage: "list.bullet.circle")
+        }
+        .tag(Tabs.launches)
       BootView()
-    } else {
-      TabView {
-        AppView()
-          .tabItem {
-            Label("App", systemImage: "app")
-          }
-          .tag(Tabs.app)
-        SourceView()
-          .tabItem {
-            Label("Source", systemImage: "app.dashed")
-          }
-          .tag(Tabs.source)
-        LaunchHistoryView()
-          .tabItem {
-            Label("Info", systemImage: "questionmark.app")
-          }
-          .tag(Tabs.info)
-      }
-      .padding(20)
-      .frame(width: 400.0, height: 300.0)
+        .tabItem {
+          Label("Boot", systemImage: "power.circle")
+        }
+        .tag(Tabs.boot)
     }
+    .padding(20)
+    .frame(width: 800.0, height: 600.0)
   }
 }
 
