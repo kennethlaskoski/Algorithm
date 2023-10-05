@@ -11,6 +11,7 @@ struct Person: Sendable, Codable {
   var monogram: String { nameComponents.formatted(.name(style: .abbreviated)) }
 }
 
-extension Person {
-  static let placeholder = Person(nameComponents: PersonNameComponents(givenName: "Place", familyName: "Holder"))
+enum Login: Sendable, Codable {
+  case not
+  case yes(Person)
 }

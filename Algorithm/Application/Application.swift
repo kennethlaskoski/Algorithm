@@ -1,29 +1,22 @@
 //  Copyright © 2023 Kenneth Laskoski
 //  SPDX-License-Identifier: Apache-2.0
 
-import SwiftUI
+import Foundation
 
-@main
-struct Application: App {
-  @StateObject private var machine = Neander()
+extension Application {
+  private static let info = ProcessInfo.processInfo
 
-#if canImport(AppKit)
-  @NSApplicationDelegateAdaptor private var appDelegate: ApplicationDelegate
+  static var processName: String { info.processName }
+  static var processIdentifier: Int32 { info.processIdentifier }
+
+#if !os(iOS)
+  static var login: String { info.userName }
+  static var name: String { info.fullUserName }
+#else
+
 #endif
-#if canImport(UIKit)
-  @UIApplicationDelegateAdaptor private var appDelegate: ApplicationDelegate
-#endif
+}
 
-  var body: some Scene {
-    WindowGroup {
-      ContentView()
-        .environmentObject(machine)
-    }
-
-    #if os(macOS)
-    Settings {
-      SettingsView()
-    }
-    #endif
-  }
+extension String {
+  static let empty = String()
 }

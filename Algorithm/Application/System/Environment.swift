@@ -3,20 +3,20 @@
 
 import SwiftUI
 
-// MARK: - OS
-private struct BuildTimeOS: EnvironmentKey {
-  static let defaultValue = OperatingSystem.atBuildTime
+// MARK: - Target Platform
+private struct TargetPlatform: EnvironmentKey {
+  static let defaultValue = Application.targetPlatform
 }
 
 extension EnvironmentValues {
-  var buildTimeOS: OperatingSystem {
-    self[BuildTimeOS.self]
+  var targetPlatform: Platform {
+    self[TargetPlatform.self]
   }
 }
 
 // MARK: - Process
 private struct ProcessName: EnvironmentKey {
-  static let defaultValue = Process.name
+  static let defaultValue = Application.processName
 }
 
 extension EnvironmentValues {
@@ -26,12 +26,13 @@ extension EnvironmentValues {
 }
 
 // MARK: - User
-private struct User: EnvironmentKey {
-  static let defaultValue = Process.user
+private struct ProcessIdentifier: EnvironmentKey {
+  static let defaultValue = Application.processIdentifier
 }
 
 extension EnvironmentValues {
-  var user: String {
-    self[User.self]
+  var processIdentifier:  Int32 {
+    self[ProcessIdentifier.self]
   }
 }
+

@@ -4,8 +4,19 @@
 import System
 import DeviceCheck
 
-/// The Attester actor performs
-/// the app attestation tasks
+extension Device {
+  typealias Token = Data
+
+  var supportsCheck: Bool { DCDevice.current.isSupported }
+  var token: Token {
+    get async throws { try await DCDevice.current.generateToken() }
+  }
+}
+
+extension Device {
+  var supportsAttestation: Bool { DCAppAttestService.shared.isSupported }
+}
+
 actor Attester {
   private let service = DCAppAttestService.shared
   private let keyFilename = ".attestation-key-id"

@@ -1,25 +1,7 @@
 //  Copyright © 2023 Kenneth Laskoski
 //  SPDX-License-Identifier: Apache-2.0
 
-enum OperatingSystem: String {//, Sendable, Codable, Equatable {
-  case iOS
-  case tvOS
-  case macOS
-  case watchOS
-  case visionOS
-
-  case Linux
-  case Windows
-
-  // Undocumented
-  case FreeBSD
-}
-
-extension OperatingSystem {
-  var name: String { rawValue }
-}
-
-extension OperatingSystem {
+private extension OperatingSystem {
 #if os(iOS)
   static let atBuildTime: OperatingSystem = .iOS
 #endif
@@ -51,4 +33,26 @@ extension OperatingSystem {
 #if os(FreeBSD)
   static let atBuildTime: OperatingSystem = .FreeBSD
 #endif
+}
+
+private extension MachineArchitecture {
+#if arch(arm)
+  static let atBuildTime: MachineArchitecture = .arm
+#endif
+
+#if arch(i386)
+  static let atBuildTime: MachineArchitecture = .i386
+#endif
+
+#if arch(arm64)
+  static let atBuildTime: MachineArchitecture = .arm64
+#endif
+
+#if arch(x86_64)
+  static let atBuildTime: MachineArchitecture = .x86_64
+#endif
+}
+
+extension Application {
+  static let targetPlatform = Platform(operatingSystem: .atBuildTime, machineArchitecture: .atBuildTime)
 }

@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct LaunchesView: View {
-  @EnvironmentObject private var appDelegate: ApplicationDelegate
+  @EnvironmentObject private var appDelegate: Application.Delegate
 
   var body: some View {
     List(appDelegate.launchHistory) {
@@ -22,6 +22,6 @@ struct LaunchesView: View {
 struct LaunchesView_Previews: PreviewProvider {
   static var previews: some View {
     LaunchesView()
-    .environmentObject(ApplicationDelegate())
+    .environmentObject(Application.Delegate())
   }
 }

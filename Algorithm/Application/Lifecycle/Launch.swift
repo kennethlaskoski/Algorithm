@@ -6,16 +6,13 @@ import os
 
 struct Launch: Sendable, Codable {
   let date: Date
-  var person: Person
   var device: Device
 
-  init(at date: Date = .now, by person: Person = .placeholder, on device: Device = .unknown) {
+  init(at date: Date = .now, on device: Device = Application.device) {
     self.date = date
-    self.person = person
     self.device = device
   }
 }
 
 func finishLaunching() {
-
 }

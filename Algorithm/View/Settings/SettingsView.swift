@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-  @EnvironmentObject private var appDelegate: ApplicationDelegate
+  @EnvironmentObject private var appDelegate: Application.Delegate
 
   private enum Tabs: Hashable {
     case systemInfo
@@ -14,7 +14,7 @@ struct SettingsView: View {
 
   var body: some View {
     TabView {
-      SystemInfoView()
+      AppInfo()
         .tabItem {
           Label("System Info", systemImage: "info.circle")
         }
@@ -38,6 +38,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
     SettingsView()
-    .environmentObject(ApplicationDelegate())
+    .environmentObject(Application.Delegate())
   }
 }
