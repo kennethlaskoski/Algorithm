@@ -30,8 +30,16 @@ private extension OperatingSystem {
   static let atBuildTime: OperatingSystem = .Windows
 #endif
 
+#if os(Android)
+  static let atBuildTime: OperatingSystem = .Android
+#endif
+
 #if os(FreeBSD)
   static let atBuildTime: OperatingSystem = .FreeBSD
+#endif
+
+#if os(OpenBSD)
+  static let atBuildTime: OperatingSystem = .OpenBSD
 #endif
 }
 

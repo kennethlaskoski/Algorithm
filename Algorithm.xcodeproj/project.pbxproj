@@ -13,6 +13,7 @@
 		9F18E2062ABE16C300E2C8A9 /* LaunchRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18E2052ABE16C300E2C8A9 /* LaunchRecord.swift */; };
 		9F18E2082ABE17B400E2C8A9 /* LaunchRecordJSONFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18E2072ABE17B400E2C8A9 /* LaunchRecordJSONFile.swift */; };
 		9F3837322A8ED0D500489702 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3837312A8ED0D500489702 /* Device.swift */; };
+		9F4FE9252AD6078C003A9F8B /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4FE9242AD6078C003A9F8B /* UUID.swift */; };
 		9F5372A82A30883800B071CF /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372A72A30883800B071CF /* Launch.swift */; };
 		9F5555AD2AC8C76C0088B553 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5555AC2AC8C76C0088B553 /* AppInfo.swift */; };
 		9F585E512A5F466F00CF13F6 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585E502A5F466F00CF13F6 /* Delegate.swift */; };
@@ -27,6 +28,7 @@
 		9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC3B9C2A33003700D65C29 /* BinaryView.swift */; };
 		9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA03B129B300CB00923DB7 /* BootView.swift */; };
 		9FCEE7032A5B033E008E12A1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCEE7022A5B033E008E12A1 /* Person.swift */; };
+		9FE05A952ACEC9A8004426F1 /* MACAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE05A942ACEC9A8004426F1 /* MACAddress.swift */; };
 		9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125B2A31B6F200F58C84 /* NeanderView.swift */; };
 		9FFB125E2A31B74D00F58C84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125D2A31B74D00F58C84 /* ContentView.swift */; };
 		9FFD29A729A68DD100B08B4E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD29A629A68DD100B08B4E /* App.swift */; };
@@ -62,6 +64,7 @@
 		9F18E2052ABE16C300E2C8A9 /* LaunchRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchRecord.swift; sourceTree = "<group>"; };
 		9F18E2072ABE17B400E2C8A9 /* LaunchRecordJSONFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchRecordJSONFile.swift; sourceTree = "<group>"; };
 		9F3837312A8ED0D500489702 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		9F4FE9242AD6078C003A9F8B /* UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
 		9F5372A72A30883800B071CF /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		9F5555AC2AC8C76C0088B553 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		9F585E502A5F466F00CF13F6 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		9FBC3B9C2A33003700D65C29 /* BinaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryView.swift; sourceTree = "<group>"; };
 		9FCA03B129B300CB00923DB7 /* BootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
 		9FCEE7022A5B033E008E12A1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		9FE05A942ACEC9A8004426F1 /* MACAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MACAddress.swift; sourceTree = "<group>"; };
 		9FF7F2582A2FBE920010D9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9FFB125B2A31B6F200F58C84 /* NeanderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeanderView.swift; sourceTree = "<group>"; };
 		9FFB125D2A31B74D00F58C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -184,6 +188,15 @@
 			path = Lifecycle;
 			sourceTree = "<group>";
 		};
+		9FE05A932ACEC95D004426F1 /* Values */ = {
+			isa = PBXGroup;
+			children = (
+				9FE05A942ACEC9A8004426F1 /* MACAddress.swift */,
+				9F4FE9242AD6078C003A9F8B /* UUID.swift */,
+			);
+			path = Values;
+			sourceTree = "<group>";
+		};
 		9FFB125A2A31B6AE00F58C84 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +235,7 @@
 				9FCEE7002A5B0216008E12A1 /* Application */,
 				9F5372A92A3095F600B071CF /* View */,
 				9F8E59E32A3014A40005C30E /* Model */,
+				9FE05A932ACEC95D004426F1 /* Values */,
 				9FF7F2582A2FBE920010D9FD /* Info.plist */,
 				9FFD29AA29A68DD200B08B4E /* Assets.xcassets */,
 				9FFD29AC29A68DD200B08B4E /* Algorithm.entitlements */,
@@ -408,9 +422,11 @@
 				9F0A1B2E2AB67386006AF1D2 /* Defaults.swift in Sources */,
 				9F7E5E7D2ACD296800130B34 /* Event.swift in Sources */,
 				9FB9FC582ACB54D9002837A6 /* Application.swift in Sources */,
+				9F4FE9252AD6078C003A9F8B /* UUID.swift in Sources */,
 				9F5372A82A30883800B071CF /* Launch.swift in Sources */,
 				9FCEE7032A5B033E008E12A1 /* Person.swift in Sources */,
 				9F18E2082ABE17B400E2C8A9 /* LaunchRecordJSONFile.swift in Sources */,
+				9FE05A952ACEC9A8004426F1 /* MACAddress.swift in Sources */,
 				9F18E2062ABE16C300E2C8A9 /* LaunchRecord.swift in Sources */,
 				9F5555AD2AC8C76C0088B553 /* AppInfo.swift in Sources */,
 				9F83CC982A376DAE0033C136 /* Neander.swift in Sources */,

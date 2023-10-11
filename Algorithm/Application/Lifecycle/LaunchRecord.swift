@@ -4,11 +4,6 @@
 import Foundation
 import os
 
-extension UUID {
-  static let null = UUID(uuid: UUID_NULL)
-  var isNull: Bool { self == .null }
-}
-
 extension Launch {
   struct Record: Sendable, Identifiable, Codable {
     var id: UUID

@@ -2,7 +2,7 @@
 //  SPDX-License-Identifier: Apache-2.0
 
 // MARK: - Operating System
-/// An operating system is the software that manages device hardware and
+/// An operating system is the set of sotware components with direct access hardware resources, providing services 
 /// software resources, and provides services for applications to access them.
 enum OperatingSystem: String {
   case iOS
@@ -15,6 +15,8 @@ enum OperatingSystem: String {
   case Windows
 
   // Undocumented
+  case Android
+  case OpenBSD
   case FreeBSD
 }
 

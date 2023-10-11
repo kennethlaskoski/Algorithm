@@ -31,8 +31,17 @@ private struct ProcessIdentifier: EnvironmentKey {
 }
 
 extension EnvironmentValues {
-  var processIdentifier:  Int32 {
+  var processIdentifier: Int32 {
     self[ProcessIdentifier.self]
   }
 }
 
+private struct DeviceID: EnvironmentKey {
+  static let defaultValue = Application.device
+}
+
+extension EnvironmentValues {
+  var deviceID: Device {
+    self[DeviceID.self]
+  }
+}
