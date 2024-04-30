@@ -9,7 +9,7 @@ extension Application {
   static var processName: String { info.processName }
   static var processIdentifier: Int32 { info.processIdentifier }
 
-#if !os(iOS)
+#if !os(iOS) && !os(visionOS)
   static var login: String { info.userName }
   static var name: String { info.fullUserName }
 #else

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F021F9A2A30BA2000DD6390 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F021F992A30BA2000DD6390 /* Machine.swift */; };
+		9F0790462B4E1A01004AC00D /* MemoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0790452B4E1A01004AC00D /* MemoryCellView.swift */; };
 		9F0A1B2E2AB67386006AF1D2 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A1B2D2AB67386006AF1D2 /* Defaults.swift */; };
 		9F11AD642A5388F7001D38A6 /* Attestation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F11AD632A5388F7001D38A6 /* Attestation.swift */; };
 		9F18E2062ABE16C300E2C8A9 /* LaunchRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18E2052ABE16C300E2C8A9 /* LaunchRecord.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		9F021F992A30BA2000DD6390 /* Machine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Machine.swift; sourceTree = "<group>"; };
+		9F0790452B4E1A01004AC00D /* MemoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCellView.swift; sourceTree = "<group>"; };
 		9F0A1B2D2AB67386006AF1D2 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9F11AD632A5388F7001D38A6 /* Attestation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attestation.swift; sourceTree = "<group>"; };
 		9F18E2052ABE16C300E2C8A9 /* LaunchRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchRecord.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				9F585E502A5F466F00CF13F6 /* Delegate.swift */,
 				9FFB125D2A31B74D00F58C84 /* ContentView.swift */,
 				9FFB125B2A31B6F200F58C84 /* NeanderView.swift */,
+				9F0790452B4E1A01004AC00D /* MemoryCellView.swift */,
 				9FBC3B9C2A33003700D65C29 /* BinaryView.swift */,
 				9FFB125A2A31B6AE00F58C84 /* Settings */,
 			);
@@ -404,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F0790462B4E1A01004AC00D /* MemoryCellView.swift in Sources */,
 				9F8E59E22A3008FE0005C30E /* LaunchesView.swift in Sources */,
 				9F7E5E792ACD00EC00130B34 /* Logger.swift in Sources */,
 				9F11AD642A5388F7001D38A6 /* Attestation.swift in Sources */,

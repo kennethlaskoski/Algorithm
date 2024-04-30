@@ -32,7 +32,12 @@ struct NeanderView: View {
 
         Divider()
 
-        MemoryView(state: machine.state).padding(.leading, 4.0)
+        MemoryView(
+          state: machine.state,
+          lowerBound: Neander.Word(0x80),
+          upperBound: Neander.Word(0xFF),
+          isHexa: false
+        ).padding(.leading, 4.0)
 
       }.fontDesign(.monospaced)
 
@@ -54,15 +59,17 @@ struct NeanderView: View {
 
 struct MemoryView: View {
   @ObservedObject var state: Neander.State
+  let lowerBound: Neander.Word
+  let upperBound: Neander.Word
+  let isHexa: Bool
 
   var body: some View {
     ScrollView {
       Grid(alignment: .leading) {
-        ForEach(Neander.Word(0x80)...0xFF, id: \.self) { i in
+        ForEach(lowerBound...upperBound, id: \.self) { i in
           GridRow {
             Text(String(hexa: i, length: 2))
-            MemCellView(value: $state.memory[i], isHexa: false)
-
+            MemCellView(value: $state.memory[i], isHexa: isHexa)
             Spacer()
           }
         }
@@ -70,47 +77,6 @@ struct MemoryView: View {
     }
   }
 }
-
-struct MemCellView<T: FixedWidthInteger>: View {
-  @Binding var value: T
-  let isHexa: Bool
-
-  var body: some View {
-    Text(
-      isHexa ?
-        String(hexa: value, length: 2) :
-        String(Int8(bitPattern: UInt8(value)))
-    )
-  }
-}
-
-//struct MemCellView<T: FixedWidthInteger>: View {
-//  @Binding var value: T
-//  @State private var temporaryText: String
-//  @FocusState private var isFocused: Bool
-//  let isHexa: Bool
-//
-//  init() {
-//    temporaryText = text(from: value)
-//  }
-//
-//  var body: some View {
-//    TextField(
-//      "",
-//      text: $temporaryText,
-//      onCommit: { value = T(temporaryText, radix: isHexa ? 16 : 10) ??  value }
-//    )
-//    .focused($isFocused, equals: true)
-//    .onTapGesture { isFocused = true }
-//    .onExitCommand { temporaryText = text(from: value) }
-//  }
-//
-//  func text(from value: T) -> String {
-//    isHexa ?
-//    String(hexa: value, length: 2) :
-//    String(Int8(bitPattern: UInt8(value)))
-//  }
-//}
 
 struct ACView: View {
   @ObservedObject var state: Neander.State
