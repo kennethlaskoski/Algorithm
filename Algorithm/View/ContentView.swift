@@ -10,7 +10,7 @@ struct ContentView: View {
     VStack {
       NeanderView()
       Spacer()
-      ControlPanel(machine: machine)
+      ControlPanel<Neander>()
     }
     .padding(.bottom, 8.0)
   }

@@ -3,29 +3,57 @@
 
 import SwiftUI
 
-struct ControlPanel: View {
-  let machine: Machine
-
+struct ControlPanel<M: Machine>: View {
   var body: some View {
     HStack {
-      Button(action: { machine.run() }) {
-        Label("Run", systemImage: "play.fill")
-      }
-      Button(action: { machine.halt() }) {
-        Label("Stop", systemImage: "stop.fill")
-      }
-      Button(action: { machine.step() }) {
-        Label("Step", systemImage: "forward.frame.fill")
-      }
-      Button(action: { machine.reset() }) {
-        Label("Reset", systemImage: "backward.end.fill")
-      }
+      RunButton<M>()
+      StopButton<M>()
+      StepButton<M>()
+      ResetButton<M>()
     }
   }
 }
 
-let machine = Neander()
+struct RunButton<M: Machine>: View {
+  @EnvironmentObject var machine: M
+
+  var body: some View {
+    Button(action: { machine.run() }) {
+      Label("Run", systemImage: "play.fill")
+    }
+  }
+}
+
+struct StopButton<M: Machine>: View {
+  @EnvironmentObject var machine: M
+
+  var body: some View {
+    Button(action: { machine.halt() }) {
+      Label("Stop", systemImage: "stop.fill")
+    }
+  }
+}
+
+struct StepButton<M: Machine>: View {
+  @EnvironmentObject var machine: M
+
+  var body: some View {
+    Button(action: { machine.step() }) {
+      Label("Step", systemImage: "forward.frame.fill")
+    }
+  }
+}
+
+struct ResetButton<M: Machine>: View {
+  @EnvironmentObject var machine: M
+
+  var body: some View {
+    Button(action: { machine.reset() }) {
+      Label("Reset", systemImage: "backward.end.fill")
+    }
+  }
+}
 
 #Preview {
-    ControlPanel(machine: machine)
+    ControlPanel<Neander>()
 }

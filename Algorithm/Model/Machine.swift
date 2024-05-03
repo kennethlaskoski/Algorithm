@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-protocol Machine {
+protocol Machine: ObservableObject {
   func run()
   func halt()
   func step()
