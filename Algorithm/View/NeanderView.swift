@@ -41,16 +41,10 @@ struct NeanderView: View {
 
       }.fontDesign(.monospaced)
 
-      HStack {
         VStack {
           PCView(state: machine.state)
           ACView(state: machine.state)
         }
-        Button(action: { machine.run() }) {
-          Label("", systemImage: "play.fill").font(.body)
-        }
-      }
-
     }
     .padding(.horizontal, 4.0)
     .font(.footnote)

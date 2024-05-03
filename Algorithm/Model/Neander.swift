@@ -8,8 +8,8 @@ class Neander: ObservableObject {
   typealias Data = UInt8
   static let memSize = (Word.min...Word.max).count
 
-//  static let bitPattern = UInt(~Word.zero)
-//  static let bitMask = Int(bitPattern: bitPattern)
+  //  static let bitPattern = UInt(~Word.zero)
+  //  static let bitMask = Int(bitPattern: bitPattern)
 
   struct Flag: Identifiable {
     let name: String
@@ -95,7 +95,7 @@ class Neander: ObservableObject {
     var state = $0.state
     state.memory.rAddr = state.rPC
     state.rPC += 1
-//    state.rPC &= bitMask
+    //    state.rPC &= bitMask
   }
 
   static let decode: Transition = {
@@ -153,7 +153,7 @@ class Neander: ObservableObject {
     default:
       break
     }
-//    state.rAC &= bitMask
+    //    state.rAC &= bitMask
   }
 
   static let jmp: Transition = {
@@ -173,7 +173,7 @@ class Neander: ObservableObject {
     default:
       break
     }
-//    state.rPC &= bitMask
+    //    state.rPC &= bitMask
   }
 
   static let cycle: Transition = {
@@ -182,12 +182,27 @@ class Neander: ObservableObject {
     fetchOperand($0)
     execute($0)
   }
+}
 
+extension Neander: Machine {
   func run() {
     state.runState = .running
     while state.runState == .running && state.rPC < 0x80 {
-      Neander.cycle(self)
+      step()
     }
     state.runState = .stopped
+  }
+
+  func halt() {
+    state.runState = .stopped
+  }
+
+  func step() {
+    Neander.cycle(self)
+  }
+
+  func reset() {
+    state.rAC = 0
+    state.rPC = 0
   }
 }

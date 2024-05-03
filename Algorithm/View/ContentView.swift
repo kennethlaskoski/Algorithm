@@ -4,8 +4,15 @@
 import SwiftUI
 
 struct ContentView: View {
+  @EnvironmentObject var machine: Neander
+
   var body: some View {
-    NeanderView()
+    VStack {
+      NeanderView()
+      Spacer()
+      ControlPanel(machine: machine)
+    }
+    .padding(.bottom, 8.0)
   }
 }
 

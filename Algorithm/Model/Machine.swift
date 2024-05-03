@@ -3,6 +3,13 @@
 
 import SwiftUI
 
+protocol Machine {
+  func run()
+  func halt()
+  func step()
+  func reset()
+}
+
 protocol Register: Identifiable {
   associatedtype Value: FixedWidthInteger
 
