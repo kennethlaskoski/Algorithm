@@ -28,6 +28,7 @@
 		9FB9FC562ACB5423002837A6 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9FC552ACB5423002837A6 /* Environment.swift */; };
 		9FB9FC582ACB54D9002837A6 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9FC572ACB54D9002837A6 /* Application.swift */; };
 		9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC3B9C2A33003700D65C29 /* BinaryView.swift */; };
+		9FC785622C0A47E800393B8D /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC785612C0A47E800393B8D /* Elements.swift */; };
 		9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA03B129B300CB00923DB7 /* BootView.swift */; };
 		9FCEE7032A5B033E008E12A1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCEE7022A5B033E008E12A1 /* Person.swift */; };
 		9FE05A952ACEC9A8004426F1 /* MACAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE05A942ACEC9A8004426F1 /* MACAddress.swift */; };
@@ -83,6 +84,7 @@
 		9FB9FC552ACB5423002837A6 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9FB9FC572ACB54D9002837A6 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		9FBC3B9C2A33003700D65C29 /* BinaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryView.swift; sourceTree = "<group>"; };
+		9FC785612C0A47E800393B8D /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
 		9FCA03B129B300CB00923DB7 /* BootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
 		9FCEE7022A5B033E008E12A1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		9FE05A942ACEC9A8004426F1 /* MACAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MACAddress.swift; sourceTree = "<group>"; };
@@ -143,7 +145,6 @@
 				9FFD29A629A68DD100B08B4E /* App.swift */,
 				9F585E502A5F466F00CF13F6 /* Delegate.swift */,
 				9FFB125D2A31B74D00F58C84 /* ContentView.swift */,
-				9FFB125B2A31B6F200F58C84 /* NeanderView.swift */,
 				9F0790452B4E1A01004AC00D /* MemoryCellView.swift */,
 				9FBC3B9C2A33003700D65C29 /* BinaryView.swift */,
 				9F04CC3E2BE545B000B03AC7 /* ControlPanel */,
@@ -176,10 +177,36 @@
 		9F8E59E32A3014A40005C30E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9FE05A932ACEC95D004426F1 /* Values */,
 				9F021F992A30BA2000DD6390 /* Machine.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9FC7855F2C0A470F00393B8D /* Neander */ = {
+			isa = PBXGroup;
+			children = (
+				9FC785632C0A48AD00393B8D /* View */,
+				9FC785602C0A472F00393B8D /* Model */,
+			);
+			path = Neander;
+			sourceTree = "<group>";
+		};
+		9FC785602C0A472F00393B8D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9FC785612C0A47E800393B8D /* Elements.swift */,
 				9F83CC972A376DAE0033C136 /* Neander.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9FC785632C0A48AD00393B8D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9FFB125B2A31B6F200F58C84 /* NeanderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9FCEE7002A5B0216008E12A1 /* Application */ = {
@@ -229,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				9FFD29A529A68DD100B08B4E /* Algorithm */,
+				9FC7855F2C0A470F00393B8D /* Neander */,
 				9FFD29B729A68DD200B08B4E /* AlgorithmTests */,
 				9FFD29C129A68DD200B08B4E /* AlgorithmUITests */,
 				9F8C39502A3A39A3004DEAF0 /* Playgrounds */,
@@ -252,7 +280,6 @@
 				9FCEE7002A5B0216008E12A1 /* Application */,
 				9F5372A92A3095F600B071CF /* View */,
 				9F8E59E32A3014A40005C30E /* Model */,
-				9FE05A932ACEC95D004426F1 /* Values */,
 				9FF7F2582A2FBE920010D9FD /* Info.plist */,
 				9FFD29AA29A68DD200B08B4E /* Assets.xcassets */,
 				9FFD29AC29A68DD200B08B4E /* Algorithm.entitlements */,
@@ -435,6 +462,7 @@
 				9F7E5E7B2ACD011F00130B34 /* Platform.swift in Sources */,
 				9FFB125E2A31B74D00F58C84 /* ContentView.swift in Sources */,
 				9FB9FC562ACB5423002837A6 /* Environment.swift in Sources */,
+				9FC785622C0A47E800393B8D /* Elements.swift in Sources */,
 				9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */,
 				9F021F9A2A30BA2000DD6390 /* Machine.swift in Sources */,
 				9FFD29A729A68DD100B08B4E /* App.swift in Sources */,
