@@ -3,9 +3,14 @@
 
 import SwiftUI
 
-protocol Machine: ObservableObject {
+protocol Machine {
   func run()
   func halt()
   func step()
   func reset()
+}
+
+protocol MachineViewModel: Machine & ObservableObject {
+  associatedtype MachineView: View
+  var view: MachineView { get }
 }

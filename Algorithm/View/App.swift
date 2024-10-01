@@ -18,7 +18,7 @@ struct Application: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      ContentView<Neander>()
         .environmentObject(machine)
     }
 

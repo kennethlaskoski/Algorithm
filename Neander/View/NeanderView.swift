@@ -11,6 +11,10 @@ extension String {
   }
 }
 
+extension Neander: MachineViewModel {
+  var view: some View { NeanderView() }
+}
+
 struct NeanderView: View {
   @EnvironmentObject var machine: Neander
 

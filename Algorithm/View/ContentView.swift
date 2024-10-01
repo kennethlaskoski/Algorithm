@@ -3,23 +3,18 @@
 
 import SwiftUI
 
-struct ContentView: View {
-  @EnvironmentObject var machine: Neander
-
+struct ContentView<Machine: MachineViewModel>: View {
+  @EnvironmentObject var machine: Machine
+  
   var body: some View {
-    VStack {
-      NeanderView()
-      Spacer()
-      ControlPanel<Neander>()
-    }
-    .padding(.bottom, 8.0)
+    machine.view
+      .toolbar {
+        ControlPanel<Machine>()
+      }
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
-  static var machine = Neander()
-  static var previews: some View {
-    ContentView()
-      .environmentObject(machine)
-  }
+#Preview {
+  ContentView<Neander>()
+    .environmentObject(Neander())
 }

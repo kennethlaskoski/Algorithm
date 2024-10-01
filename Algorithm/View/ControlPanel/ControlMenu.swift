@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ControlMenu<M: Machine>: View {
+struct ControlMenu<Machine: MachineViewModel>: View {
   var body: some View {
     Menu {
-      ControlPanel<M>()
+//      ControlPanel<Machine>()
     } label: {
       Label("Run", systemImage: "play.fill")
     }
