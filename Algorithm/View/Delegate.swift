@@ -40,7 +40,7 @@ extension Application {
       let launchLog =
 """
 Date: \(launch.date)
-Device: \(launch.device)
+Device: \(launch.deviceID)
 """
       logger.trace("Application launch: \n\(launchLog)")
       logger.trace("Application did finish launching.")

@@ -19,7 +19,7 @@
 		9F5372A82A30883800B071CF /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5372A72A30883800B071CF /* Launch.swift */; };
 		9F5555AD2AC8C76C0088B553 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5555AC2AC8C76C0088B553 /* AppInfo.swift */; };
 		9F585E512A5F466F00CF13F6 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585E502A5F466F00CF13F6 /* Delegate.swift */; };
-		9F7531F02ABD0D8500C17D60 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7531EF2ABD0D8500C17D60 /* Target.swift */; };
+		9F7531F02ABD0D8500C17D60 /* TargetPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7531EF2ABD0D8500C17D60 /* TargetPlatform.swift */; };
 		9F7E5E792ACD00EC00130B34 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7E5E782ACD00EC00130B34 /* Logger.swift */; };
 		9F7E5E7B2ACD011F00130B34 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7E5E7A2ACD011F00130B34 /* Platform.swift */; };
 		9F7E5E7D2ACD296800130B34 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7E5E7C2ACD296800130B34 /* Event.swift */; };
@@ -31,6 +31,8 @@
 		9FC785622C0A47E800393B8D /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC785612C0A47E800393B8D /* Elements.swift */; };
 		9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA03B129B300CB00923DB7 /* BootView.swift */; };
 		9FCEE7032A5B033E008E12A1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCEE7022A5B033E008E12A1 /* Person.swift */; };
+		9FD2926A2D021CBA00FAB4F0 /* IODevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD292692D021C8B00FAB4F0 /* IODevice.swift */; };
+		9FD2926C2D0224CA00FAB4F0 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD2926B2D0224C500FAB4F0 /* UIDevice.swift */; };
 		9FE05A952ACEC9A8004426F1 /* MACAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE05A942ACEC9A8004426F1 /* MACAddress.swift */; };
 		9FE760BC2BE43AFE00AC4149 /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE760BB2BE43AFE00AC4149 /* ControlPanel.swift */; };
 		9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB125B2A31B6F200F58C84 /* NeanderView.swift */; };
@@ -74,7 +76,7 @@
 		9F5372A72A30883800B071CF /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		9F5555AC2AC8C76C0088B553 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		9F585E502A5F466F00CF13F6 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
-		9F7531EF2ABD0D8500C17D60 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		9F7531EF2ABD0D8500C17D60 /* TargetPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetPlatform.swift; sourceTree = "<group>"; };
 		9F7E5E782ACD00EC00130B34 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		9F7E5E7A2ACD011F00130B34 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		9F7E5E7C2ACD296800130B34 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -87,6 +89,8 @@
 		9FC785612C0A47E800393B8D /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
 		9FCA03B129B300CB00923DB7 /* BootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
 		9FCEE7022A5B033E008E12A1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		9FD292692D021C8B00FAB4F0 /* IODevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IODevice.swift; sourceTree = "<group>"; };
+		9FD2926B2D0224C500FAB4F0 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		9FE05A942ACEC9A8004426F1 /* MACAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MACAddress.swift; sourceTree = "<group>"; };
 		9FE760BB2BE43AFE00AC4149 /* ControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanel.swift; sourceTree = "<group>"; };
 		9FF7F2582A2FBE920010D9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -156,12 +160,12 @@
 		9F7531EE2ABD0D2700C17D60 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				9F3837312A8ED0D500489702 /* Device.swift */,
+				9F7E5E7A2ACD011F00130B34 /* Platform.swift */,
 				9F7E5E782ACD00EC00130B34 /* Logger.swift */,
 				9FCEE7022A5B033E008E12A1 /* Person.swift */,
-				9F7E5E7A2ACD011F00130B34 /* Platform.swift */,
 				9F0A1B2D2AB67386006AF1D2 /* Defaults.swift */,
 				9F11AD632A5388F7001D38A6 /* Attestation.swift */,
-				9FB9FC552ACB5423002837A6 /* Environment.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -213,8 +217,10 @@
 			isa = PBXGroup;
 			children = (
 				9FB9FC572ACB54D9002837A6 /* Application.swift */,
-				9F3837312A8ED0D500489702 /* Device.swift */,
-				9F7531EF2ABD0D8500C17D60 /* Target.swift */,
+				9FD292692D021C8B00FAB4F0 /* IODevice.swift */,
+				9FD2926B2D0224C500FAB4F0 /* UIDevice.swift */,
+				9F7531EF2ABD0D8500C17D60 /* TargetPlatform.swift */,
+				9FB9FC552ACB5423002837A6 /* Environment.swift */,
 				9FCEE7012A5B0271008E12A1 /* Lifecycle */,
 				9F7531EE2ABD0D2700C17D60 /* System */,
 			);
@@ -453,17 +459,19 @@
 				9FE760BC2BE43AFE00AC4149 /* ControlPanel.swift in Sources */,
 				9F7E5E792ACD00EC00130B34 /* Logger.swift in Sources */,
 				9F11AD642A5388F7001D38A6 /* Attestation.swift in Sources */,
-				9F7531F02ABD0D8500C17D60 /* Target.swift in Sources */,
+				9F7531F02ABD0D8500C17D60 /* TargetPlatform.swift in Sources */,
 				9FCA03B229B300CB00923DB7 /* BootView.swift in Sources */,
 				9F3837322A8ED0D500489702 /* Device.swift in Sources */,
 				9FFB125C2A31B6F200F58C84 /* NeanderView.swift in Sources */,
 				9FFD29A929A68DD100B08B4E /* SettingsView.swift in Sources */,
 				9F585E512A5F466F00CF13F6 /* Delegate.swift in Sources */,
 				9F7E5E7B2ACD011F00130B34 /* Platform.swift in Sources */,
+				9FD2926C2D0224CA00FAB4F0 /* UIDevice.swift in Sources */,
 				9FFB125E2A31B74D00F58C84 /* ContentView.swift in Sources */,
 				9FB9FC562ACB5423002837A6 /* Environment.swift in Sources */,
 				9FC785622C0A47E800393B8D /* Elements.swift in Sources */,
 				9FBC3B9D2A33003700D65C29 /* BinaryView.swift in Sources */,
+				9FD2926A2D021CBA00FAB4F0 /* IODevice.swift in Sources */,
 				9F021F9A2A30BA2000DD6390 /* Machine.swift in Sources */,
 				9FFD29A729A68DD100B08B4E /* App.swift in Sources */,
 				9F0A1B2E2AB67386006AF1D2 /* Defaults.swift in Sources */,

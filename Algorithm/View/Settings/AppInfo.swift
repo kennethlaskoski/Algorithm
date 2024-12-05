@@ -5,9 +5,9 @@ import SwiftUI
 
 struct AppInfo: View {
   @Environment(\.targetPlatform) var targetPlatform
+  @Environment(\.device) var device
   @Environment(\.processName) var processName
   @Environment(\.processIdentifier) var processIdentifier
-  @Environment(\.deviceID) var device
 
   var body: some View {
     VStack {
@@ -21,6 +21,28 @@ struct AppInfo: View {
         Text(targetPlatform.machineArchitecture.name)
       }
       Spacer()
+      Text("Device")
+      HStack {
+        Text("Name:")
+        Text(device.name)
+      }
+      HStack {
+        Text("System:")
+        Text(device.systemName)
+      }
+      HStack {
+        Text("Version:")
+        Text(device.systemVersion)
+      }
+      HStack {
+        Text("Model:")
+        Text(device.model)
+      }
+      HStack {
+        Text("ID:")
+        Text(device.id.description).lineLimit(1)
+      }
+      Spacer()
       Text("Process")
       HStack {
         Text("Name:")
@@ -29,21 +51,6 @@ struct AppInfo: View {
       HStack {
         Text("ID:")
         Text(processIdentifier.description)
-      }
-      Spacer()
-      Text("Device")
-      HStack {
-        Text("Name:")
-        Text("<# device name #>")
-      }
-      HStack {
-        Text("ID:")
-        switch device {
-        case .mac(let macAddress):
-          Text(macAddress.macAddressString)
-        default:
-          Text("<# N/A #>")
-        }
       }
     }
     .padding()

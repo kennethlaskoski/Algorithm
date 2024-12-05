@@ -14,6 +14,17 @@ extension EnvironmentValues {
   }
 }
 
+// MARK: - Device
+extension Device: EnvironmentKey {
+  static let defaultValue = Application.device
+}
+
+extension EnvironmentValues {
+  var device: Device {
+    self[Device.self]
+  }
+}
+
 // MARK: - Process
 private struct ProcessName: EnvironmentKey {
   static let defaultValue = Application.processName
@@ -33,15 +44,5 @@ private struct ProcessIdentifier: EnvironmentKey {
 extension EnvironmentValues {
   var processIdentifier: Int32 {
     self[ProcessIdentifier.self]
-  }
-}
-
-private struct DeviceID: EnvironmentKey {
-  static let defaultValue = Application.device
-}
-
-extension EnvironmentValues {
-  var deviceID: Device {
-    self[DeviceID.self]
   }
 }

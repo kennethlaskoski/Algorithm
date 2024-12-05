@@ -38,6 +38,21 @@ class Neander: ObservableObject {
       get { storage[Int(addr)] }
       set { storage[Int(addr)] = newValue }
     }
+
+    init() {
+      // .text
+      storage[0x00] = 0x20
+      storage[0x01] = 0x80
+      storage[0x02] = 0x30
+      storage[0x03] = 0x81
+      storage[0x04] = 0x10
+      storage[0x05] = 0x82
+      storage[0x06] = 0xF0
+
+      // .data
+      storage[0x80] = 19
+      storage[0x81] = 23
+    }
   }
 
   class State: ObservableObject {
@@ -63,21 +78,6 @@ class Neander: ObservableObject {
 
   @Published
   var state = State()
-
-  init() {
-    // .text
-    state.memory[0x00] = 0x20
-    state.memory[0x01] = 0x80
-    state.memory[0x02] = 0x30
-    state.memory[0x03] = 0x81
-    state.memory[0x04] = 0x10
-    state.memory[0x05] = 0x82
-    state.memory[0x06] = 0xF0
-
-    // .data
-    state.memory[0x80] = 19
-    state.memory[0x81] = 23
-  }
 
   typealias Transition = (Neander) -> ()
 
@@ -202,7 +202,6 @@ extension Neander: Machine {
   }
 
   func reset() {
-    state.rAC = 0
-    state.rPC = 0
+    state = State()
   }
 }

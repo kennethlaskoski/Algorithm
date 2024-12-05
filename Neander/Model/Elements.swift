@@ -2,23 +2,23 @@
 //  SPDX-License-Identifier: Apache-2.0
 
 protocol Register: Identifiable {
-  associatedtype Value: FixedWidthInteger
+  associatedtype State: FixedWidthInteger
 
-  var name: String { get }
-  var value: Value { get set }
+  var id: String { get }
+  var state: State { get set }
 }
 
 extension Register {
-  var id: String { name }
+  var name: String { id }
 }
 
 protocol Flag: Identifiable {
-  var name: String { get }
+  var id: String { get }
   var isOn: Bool { get set }
 }
 
 extension Flag {
-  var id: String { name }
+  var name: String { id }
 }
 
 protocol MemoryType: RandomAccessCollection {
