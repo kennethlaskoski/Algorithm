@@ -4,6 +4,8 @@
 import System
 import DeviceCheck
 
+fileprivate let encoding = String.Encoding.utf8
+
 extension Device {
   typealias Token = Data
 
@@ -33,12 +35,12 @@ actor Attester {
   private var keyID: KeyID {
     get async throws {
       guard service.isSupported else { throw DCError(.featureUnsupported) }
-      return try KeyID(contentsOf: keyURL)
+      return try KeyID(contentsOf: keyURL, encoding: encoding)
     }
   }
 
   private var hasPersistedKeyID: Bool { persistedKeyID != nil }
-  private lazy var persistedKeyID: String? = { try? String(contentsOf: keyURL, encoding: .nonLossyASCII) }()
+  private lazy var persistedKeyID: String? = { try? String(contentsOf: keyURL, encoding: encoding) }()
 
   func generateKey() async {
     if hasPersistedKeyID {

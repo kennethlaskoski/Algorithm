@@ -37,13 +37,16 @@ struct Bits<RawValue: FixedWidthInteger>: OptionSet {
 }
 
 extension FixedWidthInteger {
-  var bits: Bits<Self> { Bits(rawValue: self) }
+//  var bits: Bits<Self> { Bits(rawValue: self) }
+  private func mask(_ bit: Int) -> Self { Self(1) << bit }
   subscript(_ bit: Int) -> Bool {
-    get { bits.contains(Bits[bit]) }
+    get { self & mask(bit) != 0 }
     set {
-      self = newValue ?
-      bits.union(Bits[bit]).rawValue :
-      bits.symmetricDifference(Bits[bit]).rawValue
+      if newValue {
+        self |= mask(bit)
+      } else {
+        self &= ~mask(bit)
+      }
     }
   }
 }
@@ -68,7 +71,7 @@ struct BinaryView<T: FixedWidthInteger>: View {
 
   var body: some View {
     Grid {
-      ForEach(0..<number.bitWidth / 8, id: \.self) { row in
+      ForEach((0..<number.bitWidth / 8).reversed(), id: \.self) { row in
         GridRow {
           HStack(spacing: 0.0) {
             ForEach((0..<8).reversed(), id: \.self) { column in
@@ -87,7 +90,7 @@ struct BinaryView<T: FixedWidthInteger>: View {
 }
 
 struct BinaryView_Previews: PreviewProvider {
-  static let testValue: Int = 1 - 1 - 1
+  static let testValue: Int = 1 //- 1 - 1
 
   static var previews: some View {
     BinaryView(number: Binding.constant(testValue))
